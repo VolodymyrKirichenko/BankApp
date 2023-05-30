@@ -10,7 +10,7 @@ interface IData {
   password: string,
 }
 
-export const Auth: FC = () => {
+export const Auth: FC = ({ navigation }: any) => {
   const {
     isLoading,
     login,
@@ -30,6 +30,7 @@ export const Auth: FC = () => {
     }
 
     setData({} as IData);
+    navigation.navigate('Home');
   };
 
   return (

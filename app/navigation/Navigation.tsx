@@ -7,6 +7,8 @@ import { Services } from '../components/screens/services/Services';
 import { More } from '../components/screens/more/More';
 import { Support } from '../components/screens/support/support';
 import { Payments } from '../components/screens/payments/Payments';
+import { Home } from '../components/screens/home/Home';
+import { Profile } from '../components/screens/profile/Profile';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +25,8 @@ export const Navigation: FC = () => {
               <Stack.Screen name='Services' component={Services} />
               <Stack.Screen name='Support' component={Support} />
               <Stack.Screen name='More' component={More} />
+              <Stack.Screen name='Home' component={Home} />
+              <Stack.Screen name='Profile' component={Profile} />
             </>
           ) : (
           <Stack.Screen name='Auth' component={Auth} />

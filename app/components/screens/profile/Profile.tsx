@@ -1,10 +1,10 @@
-import { View, Text } from 'react-native';
+import { View, Text, TouchableWithoutFeedback } from 'react-native';
 import { FC } from 'react';
 
-export const Profile: FC = () => {
+export const Profile: FC = ({ navigation }: any) => {
   return (
-    <View>
-      <Text>Profile</Text>
-    </View>
+    <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
+      <Text style={{top: 50}}>Profile</Text>
+    </TouchableWithoutFeedback>
   )
 }

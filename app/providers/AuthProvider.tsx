@@ -1,5 +1,5 @@
 import { createContext, useEffect, useMemo, useState, ReactNode } from 'react';
-import firebase from 'firebase/compat/app';
+import firebase from 'firebase/compat';
 import User = firebase.User;
 import { Alert } from 'react-native';
 import { auth, db, login, logout, register } from '../utils/firebase';
@@ -33,7 +33,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
         displayName: 'Noname'
       })
     } catch (error: any) {
-      Alert.alert('Error reg:', error)
+      Alert.alert('Error reg:', error.message)
     } finally {
       setIsLoading(false);
     }
@@ -45,7 +45,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
     try {
       await login(email, password);
     } catch (error: any) {
-      Alert.alert('Error login:', error)
+      Alert.alert('Error login:', error.message)
     } finally {
       setIsLoading(false);
     }

@@ -19,7 +19,7 @@ export const Field: FC<IField> = (props) => {
   return (
     <TextInput
       style={styles.input}
-      showSoftInputOnFocus={false}
+      showSoftInputOnFocus={true}
       placeholder={placeholder}
       onChangeText={onChange}
       value={val}
