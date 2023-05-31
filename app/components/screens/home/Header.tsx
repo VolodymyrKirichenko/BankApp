@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   name: {
-    top: 50,
+    top: 40,
     flexDirection: 'row',
     alignItems: 'flex-end',
   },

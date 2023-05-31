@@ -20,7 +20,7 @@ export const Avatar: FC<IAvatar> = (props) => {
 
 const styles = StyleSheet.create({
   avatar: {
-    top: 50,
+    top: 40,
     borderRadius: 50,
     backgroundColor: '#D4D4D4',
     marginRight: 12,
