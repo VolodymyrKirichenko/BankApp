@@ -8,23 +8,22 @@ import { useProfile } from '../../../hooks/useProfile';
 import { Loader } from '../../../components/ui/Loader';
 
 export const Header: FC = () => {
-  // const { isLoading, name } = useProfile();
+  const { isLoading, name } = useProfile();
   const { navigate } = useNavigation();
 
   const navigateToProfile = () => {
     navigate('Profile');
   }
 
-
-  return (
+  return isLoading ? <Loader/> : (
     <Padding style={styles.main}>
-      <Avatar name='Volodymyr' size='large' />
+      <Avatar name={name} size='large' />
 
       <TouchableOpacity
         style={styles.name}
         onPress={navigateToProfile}
       >
-        <Text style={styles.text}>Volodymyr</Text>
+        <Text style={styles.text}>{name}</Text>
 
         <Entypo
           name='chevron-small-right'

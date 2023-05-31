@@ -2,7 +2,7 @@ import { View, StyleSheet, ViewStyle  } from 'react-native';
 import { FC, ReactNode } from 'react';
 
 interface Props {
-  children: ReactNode,
+  children?: ReactNode,
   style?: ViewStyle,
 }
 

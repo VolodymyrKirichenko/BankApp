@@ -1,13 +1,18 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
-import { limit, onSnapshot, query, where } from '@firebase/firestore';
-import { collection } from '@firebase/firestore/lite';
+import {
+  limit,
+  onSnapshot,
+  query,
+  where,
+  collection
+} from '@firebase/firestore';
 import { db } from '../utils/firebase';
 
 interface IProfile {
   _id: string,
   displayName: string,
-  docID: string
+  docId: string
 }
 
 export const useProfile = () => {
@@ -34,7 +39,7 @@ export const useProfile = () => {
     isLoading,
     name,
     setName
-  }), [])
+  }), [profile, isLoading, name, setName])
 
   return value;
 }
