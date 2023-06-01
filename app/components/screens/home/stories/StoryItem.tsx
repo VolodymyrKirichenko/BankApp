@@ -1,9 +1,9 @@
 import {
   View,
-  StyleSheet,
+  Text,
   Pressable,
-  ImageBackground,
-  Text
+  StyleSheet,
+  ImageBackground
 } from 'react-native';
 import { FC } from 'react';
 import { IStory } from '../../../../typedefs/typedefs';
@@ -19,7 +19,10 @@ export const StoryItem: FC<Props> = (props) => {
   const { setActiveStories } = useData();
 
   return (
-    <Pressable onPress={() => setActiveStories(story)}>
+    <Pressable
+      style={{ alignSelf: 'flex-start' }}
+      onPress={() => setActiveStories(story)}
+    >
       <View style={styles.container}>
         <ImageBackground
           source={{ uri: story.images[0] }}

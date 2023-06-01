@@ -1,4 +1,4 @@
-import { StyleSheet, Text, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import { FC } from 'react';
 import { useStories } from '../../../../hooks/useStories';
 import { Loader } from '../../../../components/ui/Loader';
@@ -22,7 +22,7 @@ export const Stories: FC = ({ navigation }: any) => {
 
 const styles = StyleSheet.create({
   story: {
-    top: 50,
+    top: 10,
     marginRight: 20
   },
   text: {

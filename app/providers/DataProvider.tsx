@@ -7,9 +7,10 @@ import {
   useMemo,
   useState
 } from 'react';
+import { ActiveStories } from '../typedefs/typedefs';
 
 interface IContext {
-  activeStories: string[] | null,
+  activeStories: ActiveStories | null,
   setActiveStories: Dispatch<SetStateAction<any>>
 }
 
@@ -23,7 +24,7 @@ export const DataProvider: FC<{ children: ReactNode }> = ({ children }) => {
   }), [activeStories])
 
   return (
-    <DataContext.Provider value={value}>
+    <DataContext.Provider value={value as IContext}>
       {children}
     </DataContext.Provider>
   )

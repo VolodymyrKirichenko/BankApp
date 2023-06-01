@@ -3,12 +3,8 @@ import { FC, useState } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { Loader } from '../../../components/ui/Loader';
 import { Field } from '../../../components/ui/Field';
-import { Button } from '../../../components/ui/Button';
-
-interface IData {
-  email: string,
-  password: string,
-}
+import { Button } from '../../../components/ui/Button'
+import { IData } from '../../../typedefs/typedefs';
 
 export const Auth: FC = ({ navigation }: any) => {
   const {

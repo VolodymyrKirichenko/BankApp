@@ -1,5 +1,6 @@
 import { View, StyleSheet, ViewStyle  } from 'react-native';
 import { FC, ReactNode } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface Props {
   children?: ReactNode,
@@ -10,9 +11,9 @@ export const Padding: FC<Props> = (props) => {
   const { children, style } = props;
 
   return (
-    <View style={[styles.main, style]}>
+    <SafeAreaView  style={[styles.main, style]}>
       {children}
-    </View>
+    </SafeAreaView >
   )
 }
 

@@ -4,12 +4,7 @@ import {
   StyleSheet
 } from 'react-native';
 import { FC } from 'react';
-
-interface IButton {
-  onPress: () => void,
-  title: string,
-  colors?: [string, string],
-}
+import { IButton } from '../../typedefs/typedefs';
 
 export const Button: FC<IButton> = (props) => {
   const {

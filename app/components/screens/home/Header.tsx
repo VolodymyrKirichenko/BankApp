@@ -40,9 +40,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    paddingTop: 8
   },
   name: {
-    top: 40,
     flexDirection: 'row',
     alignItems: 'flex-end',
   },
