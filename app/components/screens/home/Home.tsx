@@ -3,6 +3,9 @@ import { FC, useEffect } from 'react';
 import { Header } from '../../../components/screens/home/Header';
 import { Stories } from '../../../components/screens/home/stories/Stories';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
+import { Accounts } from './accounts/Accounts';
+import { ApplyNewProduct } from './apply-new-product/ApplyNewProduct';
+import { Layout } from '../../layout/Layout';
 
 export const Home: FC = () => {
   const navigation = useNavigation();
@@ -20,17 +23,19 @@ export const Home: FC = () => {
   }, [isFocused]);
 
   return (
-    <View style={styles.main}>
+    <Layout>
       <Header />
 
       <Stories />
-    </View>
+
+      <Accounts />
+
+      <ApplyNewProduct />
+    </Layout>
   )
 }
 
 const styles = StyleSheet.create({
   main: {
-    height: '100%',
-    display: 'flex',
   }
 })

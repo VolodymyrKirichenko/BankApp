@@ -38,3 +38,28 @@ export interface ActiveStories {
   heading: string,
   images: string[],
 }
+
+export type TypeName = 'Black' | 'White'
+export type TypeCurrency = 'UAH' | 'USD'
+
+export interface IAccount {
+  _id: string,
+  userId: string,
+  balance: number,
+  cardNumber: string,
+  currency: TypeCurrency
+  name: TypeName
+}
+
+export interface IButtons {
+  text: string,
+  resolveValue: string,
+  textSecond: string,
+  resolveValueSecond: string,
+}
+
+export interface IAsyncAlert {
+  title: string,
+  message?: string,
+  buttons: IButtons,
+}
