@@ -20,10 +20,6 @@ export const StoryContainer: FC = () => {
           width: '100%',
           height: '100%',
         }}
-        imageStyle={{
-          width: 400,
-          height: 500
-        }}
       />
     )
   )

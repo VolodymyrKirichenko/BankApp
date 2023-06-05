@@ -23,6 +23,7 @@ export const Accounts: FC = ({ navigation }: any) => {
                   borderBottomColor: '#E0E1E2',
                   borderBottomWidth: 1,
                   marginBottom: 24,
+                  marginTop: 24
                 }}
               />
             )}

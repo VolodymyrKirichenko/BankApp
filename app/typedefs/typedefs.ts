@@ -39,7 +39,7 @@ export interface ActiveStories {
   images: string[],
 }
 
-export type TypeName = 'Black' | 'White'
+export type TypeName = 'Mono Black' | 'Mono White'
 export type TypeCurrency = 'UAH' | 'USD'
 
 export interface IAccount {

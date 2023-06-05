@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { FC } from 'react';
 import { TypeCurrency } from '../../../../../typedefs/typedefs';
 import { FontAwesome } from '@expo/vector-icons';
@@ -14,7 +14,7 @@ export const Currency: FC<Props> = (props) => {
     <View style={styles.mainCircle}>
       <View style={styles.secondCircle}>
         <FontAwesome
-          color='@488CF9'
+          color='#488CF9'
           size={13}
           name={currency === 'UAH' ? 'money' : 'usd'}
         />

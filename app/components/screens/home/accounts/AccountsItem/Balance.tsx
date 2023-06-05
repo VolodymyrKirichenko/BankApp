@@ -1,4 +1,4 @@
-import { Text } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { FC } from 'react';
 import { IAccount } from '../../../../../typedefs/typedefs';
 
@@ -15,6 +15,28 @@ export const Balance: FC<Props> = (props) => {
   } = account;
 
   return (
-    <Text style={{top: 50}}>More</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>{name}</Text>
+      <Text style={styles.text2}>
+        {Intl.NumberFormat(undefined, {
+          currency,
+          style: 'currency',
+        }).format(balance)}
+      </Text>
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    width: '66%',
+  },
+  text: {
+    fontSize: 15,
+  },
+  text2: {
+    fontSize: 15,
+    marginTop: 4,
+    fontWeight: 'bold',
+  },
+})
