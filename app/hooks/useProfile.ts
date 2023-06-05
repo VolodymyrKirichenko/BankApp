@@ -8,12 +8,7 @@ import {
   collection
 } from '@firebase/firestore';
 import { db } from '../utils/firebase';
-
-interface IProfile {
-  _id: string,
-  displayName: string,
-  docId: string
-}
+import { IProfile } from '../typedefs/typedefs';
 
 export const useProfile = () => {
   const [isLoading, setIsLoading] = useState(true);

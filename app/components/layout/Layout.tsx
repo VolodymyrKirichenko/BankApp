@@ -1,15 +1,15 @@
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import { FC, ReactNode } from 'react';
 
-interface ILayout {
+interface Props {
   isScrollView?: boolean,
   children: ReactNode,
 }
 
-export const Layout: FC<ILayout> = ({ children, isScrollView = true }) => {
+export const Layout: FC<Props> = ({ children, isScrollView = true }) => {
 
   return (
-    <View style={{height: '100%', width: '100%', backgroundColor: 'white', paddingTop: 16}}>
+    <View style={ styles.container }>
       {isScrollView ? (
         <ScrollView>
           {children}
@@ -20,3 +20,12 @@ export const Layout: FC<ILayout> = ({ children, isScrollView = true }) => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'white',
+    paddingTop: 8
+  }
+})

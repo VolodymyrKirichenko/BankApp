@@ -1,12 +1,6 @@
 import { TextInput, StyleSheet } from 'react-native';
 import { FC } from 'react';
-
-interface IField {
-  onChange: (val: string) => void
-  val: string
-  placeholder: string
-  isSecure?: boolean
-}
+import { IField } from '../../typedefs/typedefs';
 
 export const Field: FC<IField> = (props) => {
   const {
