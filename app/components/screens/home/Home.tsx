@@ -1,4 +1,4 @@
-import { View, StyleSheet, BackHandler } from 'react-native';
+import { StyleSheet, BackHandler } from 'react-native';
 import { FC, useEffect } from 'react';
 import { Header } from '../../../components/screens/home/Header';
 import { Stories } from '../../../components/screens/home/stories/Stories';

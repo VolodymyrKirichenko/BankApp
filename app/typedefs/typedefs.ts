@@ -1,3 +1,9 @@
+import { AntDesign } from '@expo/vector-icons';
+import { TypeRootStackParamList } from '../navigation/types';
+
+export type TypeName = 'Mono Black' | 'Mono White'
+export type TypeCurrency = 'UAH' | 'USD'
+
 export interface IStory {
   _id: string,
   heading: string,
@@ -39,9 +45,6 @@ export interface ActiveStories {
   images: string[],
 }
 
-export type TypeName = 'Mono Black' | 'Mono White'
-export type TypeCurrency = 'UAH' | 'USD'
-
 export interface IAccount {
   _id: string,
   userId: string,
@@ -62,4 +65,9 @@ export interface IAsyncAlert {
   title: string,
   message?: string,
   buttons: IButtons,
+}
+
+export interface IFooterItem {
+  iconName: keyof typeof AntDesign.glyphMap,
+  title: keyof TypeRootStackParamList,
 }

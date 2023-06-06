@@ -17,8 +17,13 @@ export const StoryContainer: FC = () => {
         duration={20}
         onComplete={() => setActiveStories(null)}
         containerStyle={{
+          top: 20,
           width: '100%',
           height: '100%',
+        }}
+        imageStyle={{
+          height: 900,
+          width: 450
         }}
       />
     )
