@@ -71,3 +71,15 @@ export interface IFooterItem {
   iconName: keyof typeof AntDesign.glyphMap,
   title: keyof TypeRootStackParamList,
 }
+
+export interface IContact {
+  _id: string,
+  displayName: string,
+  cardNumber: string,
+}
+
+export interface IOtherItem extends Pick<IFooterItem, 'iconName'> {
+  title: string,
+}
+
+export interface IIcon extends Pick<IFooterItem, 'iconName'> {}

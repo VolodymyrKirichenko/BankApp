@@ -4,28 +4,21 @@ import { Padding } from '../../components/ui/Padding';
 
 interface Props {
   text: string,
-  isCenter?: boolean,
 }
 
-export const Heading: FC<Props> = (props) => {
-  const { isCenter = false, text } = props;
+export const SubHeading: FC<Props> = (props) => {
+  const { text } = props;
 
   return (
     <Padding>
-      <Text
-        style={[styles.text, {
-          textAlign: isCenter ? 'center' : 'justify'
-        }]}
-      >
-        {text}
-      </Text>
+      <Text style={styles.text}>{text}</Text>
     </Padding>
   )
 }
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 26,
+    fontSize: 22,
     fontWeight: 'bold',
   }
 })

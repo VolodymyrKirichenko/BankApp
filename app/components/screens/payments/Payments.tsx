@@ -1,10 +1,17 @@
-import { View, Text } from 'react-native';
 import { FC } from 'react';
+import { Layout } from '../../layout/Layout';
+import { Heading } from '../../ui/Heading';
+import { Contacts } from './contacts/Contacts';
+import { Other } from './other/Other';
 
 export const Payments: FC = () => {
   return (
-    <View>
-      <Text>Payments</Text>
-    </View>
+    <Layout>
+      <Heading text='Payment' />
+
+      <Contacts />
+
+      <Other />
+    </Layout>
   )
 }
