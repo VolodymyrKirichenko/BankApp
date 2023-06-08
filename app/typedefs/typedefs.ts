@@ -72,7 +72,7 @@ export interface IFooterItem {
   title: keyof TypeRootStackParamList,
 }
 
-export interface IContact{
+export interface IContact {
   _id: string,
   displayName: string,
   cardNumber: string,
