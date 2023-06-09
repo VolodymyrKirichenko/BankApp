@@ -47,6 +47,11 @@ export const handleTransfer = async (fromAccount: IAccount, cardNumber: string, 
       return;
     }
 
+    if (fromAccount.balance < Number(transferAmount)) {
+      Alert.alert('Insufficient funds in your account');
+      return;
+    }
+
     await updateDoc(docRefTo, {
       balance: currentToBalance + Number(convertAmount),
     });

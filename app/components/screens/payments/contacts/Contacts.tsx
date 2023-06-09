@@ -4,12 +4,15 @@ import { useContacts } from '../../../../hooks/useContacts';
 import { SubHeading } from '../../../ui/SubHeading'
 import { Loader } from '../../../ui/Loader';
 import { ContactItem } from './ContactItem/ContactItem';
+import { TransferByCardNumber } from './TransferByCardNumber/TransferByCardNumber';
 
 export const Contacts: FC = () => {
   const { contacts, isLoading } = useContacts();
 
   return (
     <View style={styles.main}>
+      <TransferByCardNumber />
+
       <SubHeading text='Phone transfers' />
 
       {isLoading ? (

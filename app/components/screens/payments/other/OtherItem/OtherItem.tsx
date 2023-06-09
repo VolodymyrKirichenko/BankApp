@@ -24,15 +24,13 @@ export const OtherItem: FC<Props> = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [transferAmount, setTransferAmount] = useState('');
 
-  const CARD_NUMBER = '6275 2015 3872 0155';
-
   const handleTransferPress = () => {
     setShowModal(true);
   };
 
   const handleTransferConfirm = async () => {
     setShowModal(false);
-    await handleTransfer(accounts[0], CARD_NUMBER, transferAmount);
+    await handleTransfer(accounts[0], '5111 8234 5714 1749', transferAmount);
   };
 
   return (

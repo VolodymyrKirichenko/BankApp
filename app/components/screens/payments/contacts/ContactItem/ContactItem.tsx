@@ -76,16 +76,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  flexButtons: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '80%',
+    justifyContent: 'flex-end',
+  },
   input: {
     width: '80%',
     borderWidth: 1,
     padding: 10,
     marginVertical: 10,
   },
-  flexButtons: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '80%',
-    justifyContent: 'flex-end',
-  }
 });
