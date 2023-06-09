@@ -37,8 +37,10 @@ export const handleTransfer = async (fromAccount: IAccount, cardNumber: string, 
       const accountToCurrency = docSnapTo.data().currency;
 
       if (accountFromCurrency !== accountToCurrency) {
-        const convertedAmount = convertCurrency(Number(transferAmount), accountFromCurrency, accountToCurrency);
+        const convertedAmount = await convertCurrency(Number(transferAmount), accountFromCurrency, accountToCurrency);
         convertAmount = convertedAmount.toString();
+      } else {
+        convertAmount = transferAmount;
       }
     } else {
       Alert.alert('The card where you are sending money was not found');
@@ -60,5 +62,4 @@ export const handleTransfer = async (fromAccount: IAccount, cardNumber: string, 
     Alert.alert('Error transfer', error.message);
   }
 };
-
 

@@ -24,7 +24,7 @@ export const OtherItem: FC<Props> = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [transferAmount, setTransferAmount] = useState('');
 
-  const CARD_NUMBER = '0863 2686 6122 9794';
+  const CARD_NUMBER = '6275 2015 3872 0155';
 
   const handleTransferPress = () => {
     setShowModal(true);
