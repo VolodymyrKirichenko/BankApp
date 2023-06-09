@@ -27,10 +27,11 @@ export interface IButton {
 }
 
 export interface IField {
-  onChange: (val: string) => void
-  val: string
+  onChange?: (val: string) => void
+  val?: string
   placeholder: string
   isSecure?: boolean
+  keyboardType?: string
 }
 
 export interface IProfile {

@@ -8,6 +8,7 @@ export const Field: FC<IField> = (props) => {
     placeholder,
     val,
     isSecure,
+    keyboardType,
   } = props;
 
   return (
@@ -19,6 +20,7 @@ export const Field: FC<IField> = (props) => {
       value={val}
       secureTextEntry={isSecure}
       autoCapitalize='none'
+      keyboardType='numeric'
     />
   )
 }

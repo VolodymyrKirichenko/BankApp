@@ -1,7 +1,9 @@
 import { FC, useState } from 'react';
-import { TextInput, StyleSheet, View, Modal, Text, Button } from 'react-native';
+import { StyleSheet, View, Modal } from 'react-native';
 import { handleTransfer } from '../../../payments/handleTransfer';
 import { useAccounts } from '../../../../../hooks/useAccounts';
+import { Button } from '../../../../../components/ui/Button';
+import { ModalWindow } from '../../../../ui/ModalWindow';
 
 interface Props {
 }
@@ -32,45 +34,29 @@ export const TransferByCardNumber: FC<Props> = (props) => {
     await handleTransfer(accounts[0], cardNumberWithSpaces, transferAmount);
 
     setCardNumber('');
-    setShowModal(false);
     setTransferAmount('');
+    setShowModal(false);
   };
 
   return (
     <>
       <View style={styles.button}>
         <Button
-          title={'U wanna send some money?'}
+          title='U wanna send some money on card?'
           onPress={() => setShowModal(true)}
         />
       </View>
 
-      <Modal visible={showModal} animationType="slide">
-        <View style={styles.modalContainer}>
-          <Text>Enter the recipient's card number:</Text>
-
-          <TextInput
-            style={styles.input}
-            keyboardType="numeric"
-            value={cardNumber}
-            onChangeText={setCardNumber}
-          />
-
-          <Text>Amount</Text>
-
-          <TextInput
-            style={styles.input}
-            keyboardType="numeric"
-            value={transferAmount}
-            onChangeText={setTransferAmount}
-          />
-
-          <View style={styles.flexButtons}>
-            <Button title="Confirm" onPress={handleTransferConfirm} />
-            <Button title="Cancel" onPress={() => setShowModal(false)} />
-          </View>
-        </View>
-      </Modal>
+      <ModalWindow
+        showModal={showModal}
+        setShowModal={setShowModal}
+        setTransferAmount={setTransferAmount}
+        transferAmount={transferAmount}
+        setCardNumber={setCardNumber}
+        cardNumber={cardNumber}
+        handleTransferConfirm={handleTransferConfirm}
+        needTwo={true}
+      />
     </>
   )
 }
@@ -81,17 +67,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     marginVertical: 10,
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  flexButtons: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '80%',
-    justifyContent: 'flex-end',
   },
   button: {
     width: '100%',
