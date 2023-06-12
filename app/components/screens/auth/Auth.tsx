@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { Loader } from '../../../components/ui/Loader';
 import { Field } from '../../../components/ui/Field';
@@ -15,6 +15,7 @@ export const Auth: FC = ({ navigation }: any) => {
 
   const [data, setData] = useState<IData>({} as IData);
   const [isReg, setIsReg] = useState(false);
+  const [isSecure, setIsSecure] = useState(true);
 
   const authHandler = async () => {
     const { email, password } = data;
@@ -28,6 +29,10 @@ export const Auth: FC = ({ navigation }: any) => {
     setData({} as IData);
     navigation.navigate('Home');
   };
+
+  const handleChangeSecure = useCallback(() => {
+    setIsSecure((prevState => !prevState))
+  }, [])
 
   return (
     <View style={styles.main}>
@@ -51,7 +56,8 @@ export const Auth: FC = ({ navigation }: any) => {
                 val={data.password}
                 placeholder='Enter password'
                 onChange={val => setData({...data, password: val})}
-                isSecure={true}
+                isSecure={isSecure}
+                onChangeSecure={handleChangeSecure}
               />
 
               <Button

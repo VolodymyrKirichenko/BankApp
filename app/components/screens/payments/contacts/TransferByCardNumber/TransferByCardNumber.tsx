@@ -5,12 +5,7 @@ import { useAccounts } from '../../../../../hooks/useAccounts';
 import { Button } from '../../../../../components/ui/Button';
 import { ModalWindow } from '../../../../ui/ModalWindow';
 
-interface Props {
-}
-
-export const TransferByCardNumber: FC<Props> = (props) => {
-  const {} = props;
-
+export const TransferByCardNumber: FC = () => {
   const [transferAmount, setTransferAmount] = useState('');
   const [cardNumber, setCardNumber] = useState('');
   const [showModal, setShowModal] = useState(false);

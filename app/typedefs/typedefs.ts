@@ -1,5 +1,6 @@
 import { AntDesign } from '@expo/vector-icons';
 import { TypeRootStackParamList } from '../navigation/types';
+import { KeyboardTypeOptions } from 'react-native';
 
 export type TypeName = 'Mono Black' | 'Mono White'
 export type TypeCurrency = 'UAH' | 'USD'
@@ -27,11 +28,12 @@ export interface IButton {
 }
 
 export interface IField {
-  onChange?: (val: string) => void
-  val?: string
-  placeholder: string
-  isSecure?: boolean
-  keyboardType?: string
+  onChange?: (val: string) => void,
+  val?: string,
+  placeholder: string,
+  isSecure?: boolean,
+  keyboardType?: KeyboardTypeOptions | undefined,
+  onChangeSecure?: () => void,
 }
 
 export interface IProfile {
