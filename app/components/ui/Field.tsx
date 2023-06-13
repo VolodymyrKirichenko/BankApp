@@ -32,7 +32,7 @@ export const Field: FC<IField> = (props) => {
         <Icon
           name={isSecure ? 'eye-slash' : 'eye'}
           size={20}
-          color="#000"
+          color={isSecure ? 'grey' : '#000'}
           style={styles.icon}
           onPress={onChangeSecure}
         />

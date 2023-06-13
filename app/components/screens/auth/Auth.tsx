@@ -5,17 +5,21 @@ import { Loader } from '../../../components/ui/Loader';
 import { Field } from '../../../components/ui/Field';
 import { Button } from '../../../components/ui/Button'
 import { IData } from '../../../typedefs/typedefs';
+import { AuthModal } from './AuthModal/AuthModal';
+import { useGeneratePassword } from '../../../hooks/useGeneratePassword';
 
 export const Auth: FC = ({ navigation }: any) => {
+  const [data, setData] = useState<IData>({} as IData);
+  const [isReg, setIsReg] = useState(false);
+  const [isSecure, setIsSecure] = useState(true);
+
   const {
     isLoading,
     login,
     register
   } = useAuth();
 
-  const [data, setData] = useState<IData>({} as IData);
-  const [isReg, setIsReg] = useState(false);
-  const [isSecure, setIsSecure] = useState(true);
+  const { isModalVisible, handleChangeModalVisible } = useGeneratePassword();
 
   const authHandler = async () => {
     const { email, password } = data;
@@ -59,6 +63,14 @@ export const Auth: FC = ({ navigation }: any) => {
                 isSecure={isSecure}
                 onChangeSecure={handleChangeSecure}
               />
+
+              <Pressable onPress={handleChangeModalVisible}>
+                <Text style={styles.lowText}>
+                  {isReg ? 'Generate password' : ''}
+                </Text>
+              </Pressable>
+
+              <AuthModal isVisible={isModalVisible} />
 
               <Button
                 onPress={authHandler}
