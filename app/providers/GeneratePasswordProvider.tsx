@@ -7,9 +7,11 @@ import {
   useState
 } from 'react';
 import { generatePassword } from '../utils/generatePassword';
+import { useTimer } from '../hooks/useTimer';
 
 export interface IContext {
   password: string,
+  isClicked: boolean,
   isNumbers: boolean,
   isUpperLetters: boolean,
   isLowerLetters: boolean,
@@ -19,7 +21,7 @@ export interface IContext {
   handleChangeNumbersInput: () => void,
   handleChangeUpperInput: () => void,
   handleChangeLowerInput: () => void,
-  handleChangeModalVisible: () => void,
+  handleChangeModalVisible: (v?: boolean) => void,
   handleChangeSpecialCharsInput: () => void,
 }
 
@@ -32,6 +34,11 @@ export const GeneratePasswordProvider: FC<{ children: ReactNode }> = ({ children
   const [isSpecialChars, setIsSpecialChars] = useState(true);
   const [isNumbers, setIsNumbers] = useState(true);
   const [password, setPassword] = useState('');
+  const [isClicked, setIsClicked] = useState(false);
+
+
+  const delay = 1000;
+  useTimer({isClicked, setIsClicked, delay });
 
   const createNewPassword = useCallback(() => {
     const generate = generatePassword(10, isUpperLetters, isLowerLetters, isNumbers, isSpecialChars);
@@ -39,8 +46,12 @@ export const GeneratePasswordProvider: FC<{ children: ReactNode }> = ({ children
     setPassword(generate);
   }, [isUpperLetters, isLowerLetters, isSpecialChars, isNumbers]);
 
-  const handleChangeModalVisible = useCallback(() => {
+  const handleChangeModalVisible = useCallback((confirm : boolean = false) => {
     setIsModalVisible((prevState) => !prevState);
+
+    if (confirm) {
+      setIsClicked(true);
+    }
   }, []);
 
   const handleChangeUpperInput = useCallback(() => {
@@ -62,6 +73,7 @@ export const GeneratePasswordProvider: FC<{ children: ReactNode }> = ({ children
   const value = useMemo(() => ({
     password,
     isNumbers,
+    isClicked,
     isUpperLetters,
     isLowerLetters,
     isSpecialChars,
@@ -75,6 +87,7 @@ export const GeneratePasswordProvider: FC<{ children: ReactNode }> = ({ children
   }), [
     password,
     isNumbers,
+    isClicked,
     isUpperLetters,
     isLowerLetters,
     isSpecialChars,

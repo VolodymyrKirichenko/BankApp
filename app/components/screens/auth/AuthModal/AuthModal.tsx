@@ -8,7 +8,7 @@ import {
 import { useGeneratePassword } from '../../../../hooks/useGeneratePassword';
 import { Button } from '../../../../components/ui/Button';
 import { PasswordSettings } from '../../../ui/PasswordSettings';
-import { usePassword } from './passwordSettings';
+import { usePassword } from '../../../../hooks/usePassword';
 
 interface Props {
   isVisible: boolean,
@@ -59,14 +59,14 @@ export const AuthModal: FC<Props> = (props) => {
           <View style={{ flex: 1 }}>
             <Button
               title='Confirm'
-              onPress={handleChangeModalVisible}
+              onPress={() => handleChangeModalVisible(true)}
             />
           </View>
 
           <View style={{ flex: 1 }}>
             <Button
               title='Cancel'
-              onPress={handleChangeModalVisible}
+              onPress={() => handleChangeModalVisible()}
             />
           </View>
         </View>

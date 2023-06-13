@@ -46,8 +46,13 @@ export const ModalWindow: FC<Props> = (props) => {
         />
 
         <View style={styles.flexButtons}>
-          <Button title="Confirm" onPress={handleTransferConfirm} />
-          <Button title="Cancel" onPress={() => setShowModal(false)} />
+          <View style={{ flex: 1 }}>
+            <Button title="Confirm" onPress={handleTransferConfirm} />
+          </View>
+
+          <View style={{ flex: 1 }}>
+            <Button title="Cancel" onPress={() => setShowModal(false)} />
+          </View>
         </View>
       </View>
     </Modal>
@@ -64,5 +69,6 @@ const styles = StyleSheet.create({
   flexButtons: {
     display: 'flex',
     flexDirection: 'row',
+    gap: 10
   },
 })

@@ -1,5 +1,5 @@
-import { PasswordsType } from '../../../../typedefs/typedefs';
-import { useGeneratePassword } from '../../../../hooks/useGeneratePassword';
+import { PasswordsType } from '../typedefs/typedefs';
+import { useGeneratePassword } from '../hooks/useGeneratePassword';
 
 export const usePassword = () => {
   const {

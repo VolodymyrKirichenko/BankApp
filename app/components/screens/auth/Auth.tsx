@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { Loader } from '../../../components/ui/Loader';
 import { Field } from '../../../components/ui/Field';
@@ -19,6 +19,8 @@ export const Auth: FC = ({ navigation }: any) => {
     register
   } = useAuth();
 
+  const { password, isClicked } = useGeneratePassword();
+
   const { isModalVisible, handleChangeModalVisible } = useGeneratePassword();
 
   const authHandler = async () => {
@@ -37,6 +39,10 @@ export const Auth: FC = ({ navigation }: any) => {
   const handleChangeSecure = useCallback(() => {
     setIsSecure((prevState => !prevState))
   }, [])
+
+  useEffect(() => {
+    setData({...data, password: password});
+  }, [isClicked])
 
   return (
     <View style={styles.main}>
@@ -64,7 +70,7 @@ export const Auth: FC = ({ navigation }: any) => {
                 onChangeSecure={handleChangeSecure}
               />
 
-              <Pressable onPress={handleChangeModalVisible}>
+              <Pressable onPress={() => handleChangeModalVisible()}>
                 <Text style={styles.lowText}>
                   {isReg ? 'Generate password' : ''}
                 </Text>
