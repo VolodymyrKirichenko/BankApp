@@ -27,7 +27,7 @@ export const Profile: FC = ({ navigation }: any) => {
 
   return (
     <Layout>
-      <Heading text='Profile' isCenter={true}/>
+      <Heading text='Profile' isCenter={true} />
 
       <Padding>
         {isSuccess && (

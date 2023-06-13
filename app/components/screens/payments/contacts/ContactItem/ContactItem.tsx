@@ -2,16 +2,14 @@ import {
   Text,
   Pressable,
   StyleSheet,
-  TextInput,
-  Modal,
   View,
-  Button
 } from 'react-native';
 import { FC, useState } from 'react';
 import { IContact } from '../../../../../typedefs/typedefs';
 import { Avatar } from '../../../../ui/Avatar';
 import { useAccounts } from '../../../../../hooks/useAccounts';
 import { handleTransfer } from '../../handleTransfer';
+import { ModalWindow } from '../../../../ui/ModalWindow';
 
 interface Props {
   contact: IContact,
@@ -28,8 +26,10 @@ export const ContactItem: FC<Props> = (props) => {
   };
 
   const handleTransferConfirm = async () => {
-    setShowModal(false);
     await handleTransfer(accounts[0], contact.cardNumber, transferAmount);
+
+    setTransferAmount('');
+    setShowModal(false);
   };
 
   return (
@@ -40,23 +40,13 @@ export const ContactItem: FC<Props> = (props) => {
         <Text style={styles.text}>{contact.displayName}</Text>
       </Pressable>
 
-      <Modal visible={showModal} animationType="slide">
-        <View style={styles.modalContainer}>
-          <Text>Enter the transfer amount:</Text>
-
-          <TextInput
-            style={styles.input}
-            keyboardType="numeric"
-            value={transferAmount}
-            onChangeText={setTransferAmount}
-          />
-
-          <View style={styles.flexButtons}>
-            <Button title="Confirm" onPress={handleTransferConfirm} />
-            <Button title="Cancel" onPress={() => setShowModal(false)} />
-          </View>
-        </View>
-      </Modal>
+      <ModalWindow
+        showModal={showModal}
+        setShowModal={setShowModal}
+        setTransferAmount={setTransferAmount}
+        transferAmount={transferAmount}
+        handleTransferConfirm={handleTransferConfirm}
+      />
     </View>
   );
 };
@@ -71,21 +61,10 @@ const styles = StyleSheet.create({
     marginTop: 4,
     fontSize: 14,
   },
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   input: {
     width: '80%',
     borderWidth: 1,
     padding: 10,
     marginVertical: 10,
   },
-  flexButtons: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '80%',
-    justifyContent: 'flex-end',
-  }
 });

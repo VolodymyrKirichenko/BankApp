@@ -10,7 +10,7 @@ export const Button: FC<IButton> = (props) => {
   const {
     title,
     onPress,
-    colors = ['yellow', '#FBBF24']
+    colors = ['yellow', '#FBBF24'],
   } = props;
 
   return (

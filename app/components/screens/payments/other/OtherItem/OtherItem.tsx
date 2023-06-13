@@ -3,16 +3,14 @@ import {
   Text,
   Pressable,
   StyleSheet,
-  Modal,
   View,
-  TextInput,
-  Button
 } from 'react-native';
 import { IOtherItem } from '../../../../../typedefs/typedefs';
 import { Icon } from './Icon';
 import { BOX_SHADOW } from '../../../../../utils/styles';
 import { handleTransfer } from '../../handleTransfer';
 import { useAccounts } from '../../../../../hooks/useAccounts';
+import { ModalWindow } from '../../../../ui/ModalWindow';
 
 interface Props {
   item: IOtherItem,
@@ -24,15 +22,15 @@ export const OtherItem: FC<Props> = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [transferAmount, setTransferAmount] = useState('');
 
-  const CARD_NUMBER = '0863 2686 6122 9794';
-
   const handleTransferPress = () => {
     setShowModal(true);
   };
 
   const handleTransferConfirm = async () => {
+    await handleTransfer(accounts[0], '5111 8234 5714 1749', transferAmount);
+
+    setTransferAmount('');
     setShowModal(false);
-    await handleTransfer(accounts[0], CARD_NUMBER, transferAmount);
   };
 
   return (
@@ -46,23 +44,13 @@ export const OtherItem: FC<Props> = (props) => {
         <Text>{item.title}</Text>
       </Pressable>
 
-      <Modal visible={showModal} animationType="slide">
-        <View style={styles.modalContainer}>
-          <Text>Enter the transfer amount:</Text>
-
-          <TextInput
-            style={styles.input}
-            keyboardType="numeric"
-            value={transferAmount}
-            onChangeText={setTransferAmount}
-          />
-
-          <View style={styles.flexButtons}>
-            <Button title="Confirm" onPress={handleTransferConfirm} />
-            <Button title="Cancel" onPress={() => setShowModal(false)} />
-          </View>
-        </View>
-      </Modal>
+      <ModalWindow
+        showModal={showModal}
+        setShowModal={setShowModal}
+        setTransferAmount={setTransferAmount}
+        transferAmount={transferAmount}
+        handleTransferConfirm={handleTransferConfirm}
+      />
     </View>
   );
 };
@@ -78,21 +66,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   input: {
     width: '80%',
     borderWidth: 1,
     padding: 10,
     marginVertical: 10,
   },
-  flexButtons: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '80%',
-    justifyContent: 'flex-end',
-  }
 });
