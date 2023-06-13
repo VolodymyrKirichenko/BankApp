@@ -8,6 +8,7 @@ import {
 import { useGeneratePassword } from '../../../../hooks/useGeneratePassword';
 import { Button } from '../../../../components/ui/Button';
 import { PasswordSettings } from '../../../ui/PasswordSettings';
+import { usePassword } from './passwordSettings';
 
 interface Props {
   isVisible: boolean,
@@ -17,18 +18,12 @@ export const AuthModal: FC<Props> = (props) => {
   const { isVisible } = props;
 
   const {
-    isNumbers,
     password,
-    isUpperLetters,
-    isLowerLetters,
-    isSpecialChars,
     createNewPassword,
-    handleChangeUpperInput,
-    handleChangeLowerInput,
-    handleChangeNumbersInput,
     handleChangeModalVisible,
-    handleChangeSpecialCharsInput,
   } = useGeneratePassword();
+
+  const { passwordSettings } = usePassword();
 
   return (
     <Modal visible={isVisible} animationType="slide">
@@ -40,39 +35,41 @@ export const AuthModal: FC<Props> = (props) => {
           />
         </View>
 
-        <PasswordSettings
-          isCondition={isUpperLetters}
-          condition='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-          handleChange={handleChangeUpperInput}
-        />
+        {passwordSettings.map(input => {
+          const { isCondition, condition, handleChange } = input;
 
-        <PasswordSettings
-          isCondition={isLowerLetters}
-          condition='abcdefghijklmnopqrstuvwxyz'
-          handleChange={handleChangeLowerInput}
-        />
+          return (
+            <PasswordSettings
+              key={condition}
+              isCondition={isCondition}
+              condition={condition}
+              handleChange={handleChange}
+            />
+          )
+        })}
 
-        <PasswordSettings
-          isCondition={isSpecialChars}
-          condition='!@#$%^&*'
-          handleChange={handleChangeSpecialCharsInput}
-        />
+        <View style={styles.createButton}>
+          <Button
+            title='Create new password'
+            onPress={createNewPassword}
+          />
+        </View>
 
-        <PasswordSettings
-          isCondition={isNumbers}
-          condition='1234567890'
-          handleChange={handleChangeNumbersInput}
-        />
+        <View style={styles.buttonsFlex}>
+          <View style={{ flex: 1 }}>
+            <Button
+              title='Confirm'
+              onPress={handleChangeModalVisible}
+            />
+          </View>
 
-        <Button
-          title='Create new password'
-          onPress={createNewPassword}
-        />
-
-        <Button
-          title='Cancel'
-          onPress={handleChangeModalVisible}
-        />
+          <View style={{ flex: 1 }}>
+            <Button
+              title='Cancel'
+              onPress={handleChangeModalVisible}
+            />
+          </View>
+        </View>
       </View>
     </Modal>
   )
@@ -88,14 +85,22 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    paddingHorizontal: 30
+    paddingHorizontal: 20
   },
   input: {
     fontFamily: 'mt-light',
     borderRadius: 12,
     backgroundColor: '#EDF2EF',
     marginTop: 10,
-    padding: 5,
+    padding: 10,
     flex: 1,
   },
+  buttonsFlex: {
+    flexDirection: 'row',
+    marginHorizontal: 20,
+    gap: 10
+  },
+  createButton: {
+    width: '90%',
+  }
 })

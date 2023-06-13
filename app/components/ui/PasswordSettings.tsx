@@ -38,16 +38,15 @@ export const PasswordSettings: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   item: {
     width: '100%',
-    justifyContent: 'space-between',
     flexDirection: 'row',
-    paddingHorizontal: 30
+    paddingHorizontal: 20,
   },
   input: {
     fontFamily: 'mt-light',
     borderRadius: 12,
     backgroundColor: '#EDF2EF',
     marginTop: 10,
-    padding: 5,
+    padding: 10,
     flex: 1,
   },
 })

@@ -81,6 +81,12 @@ export interface IContact {
   cardNumber: string,
 }
 
+export interface PasswordsType {
+  isCondition: boolean,
+  condition: string,
+  handleChange: () => void,
+}
+
 export interface IOtherItem extends Pick<IFooterItem, 'iconName'> {
   title: string,
 }
