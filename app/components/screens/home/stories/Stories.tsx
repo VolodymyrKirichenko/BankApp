@@ -23,7 +23,8 @@ export const Stories: FC = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   story: {
     top: 10,
-    marginRight: 20
+    marginRight: 20,
+    marginBottom: 30
   },
   text: {
     fontSize: 20,
