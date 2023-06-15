@@ -101,6 +101,13 @@ export interface IMessage {
   timestamp: any,
 }
 
+export interface IMoreItem {
+  title: string,
+  description: string,
+  iconName: keyof typeof MaterialIcons.glyphMap,
+  link: string
+}
+
 export interface IOtherItem extends Pick<IFooterItem, 'iconName'> {
   title: string,
 }
