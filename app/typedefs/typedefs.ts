@@ -94,6 +94,13 @@ export interface IService {
   percent: number,
 }
 
+export interface IMessage {
+  _id: string,
+  text: string,
+  userId: string,
+  timestamp: any,
+}
+
 export interface IOtherItem extends Pick<IFooterItem, 'iconName'> {
   title: string,
 }

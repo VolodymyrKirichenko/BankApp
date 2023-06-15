@@ -1,4 +1,4 @@
-import { StyleSheet, BackHandler } from 'react-native';
+import { BackHandler } from 'react-native';
 import { FC, useEffect } from 'react';
 import { Header } from '../../../components/screens/home/Header';
 import { Stories } from '../../../components/screens/home/stories/Stories';
@@ -34,8 +34,3 @@ export const Home: FC = () => {
     </Layout>
   )
 }
-
-const styles = StyleSheet.create({
-  main: {
-  }
-})

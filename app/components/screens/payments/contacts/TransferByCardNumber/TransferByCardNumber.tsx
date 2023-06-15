@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { StyleSheet, View, Modal } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { handleTransfer } from '../../../payments/handleTransfer';
 import { useAccounts } from '../../../../../hooks/useAccounts';
 import { Button } from '../../../../../components/ui/Button';

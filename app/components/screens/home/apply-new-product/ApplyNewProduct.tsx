@@ -50,7 +50,7 @@ export const ApplyNewProduct: FC = () => {
   };
 
   return (
-    <Padding style={{ marginTop: 24 }}>
+    <Padding>
       <Button
         onPress={registerHandler}
         title='Apply for a new product'

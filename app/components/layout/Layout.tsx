@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     backgroundColor: 'white',
-    paddingTop: 32
+    paddingTop: 24
   }
 })
