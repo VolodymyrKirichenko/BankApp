@@ -1,11 +1,15 @@
 import { TypeCurrency } from '../typedefs/typedefs';
 
-const getCurrencyCode = (currency: TypeCurrency): number => {
+export const getCurrencyCode = (currency: TypeCurrency): number => {
   switch (currency) {
     case 'USD':
       return 840;
     case 'UAH':
       return 980;
+    case 'EUR':
+      return 978;
+    case 'PLN':
+      return 985;
     default:
       throw new Error('Невідома валюта');
   }

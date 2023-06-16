@@ -1,6 +1,6 @@
 import { IMoreItem } from '../../../typedefs/typedefs';
 
-const url = 'https://www.monobank.ua/deposit';
+const url = 'https://www.monobank.ua';
 
 export const menu: IMoreItem[] = [
   {
