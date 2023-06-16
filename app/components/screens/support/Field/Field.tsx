@@ -6,7 +6,7 @@ import {
   Alert
 } from 'react-native';
 import { useAuth } from '../../../../hooks/useAuth';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { addDoc, serverTimestamp } from 'firebase/firestore';
 import { collection } from '@firebase/firestore';
@@ -15,6 +15,11 @@ import { db } from '../../../../utils/firebase';
 export const Field = () => {
   const { user } = useAuth();
   const [message, setMessage] = useState('');
+  const [isKeyPress, setIsKeyPress] = useState(false);
+
+  const handleChangeKeyPress = useCallback(() => {
+    setIsKeyPress((prevState) => !prevState);
+  }, [])
 
   const handleSendMessage = async () => {
     try {
@@ -32,13 +37,15 @@ export const Field = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { bottom: isKeyPress ? 100 : 40 }]}>
       <TextInput
         placeholder='Enter your message'
         onChangeText={setMessage}
         value={message}
         autoCapitalize='none'
         style={styles.input}
+        onFocus={handleChangeKeyPress}
+        onBlur={handleChangeKeyPress}
       />
 
       <Pressable onPress={handleSendMessage}>
@@ -59,7 +66,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: 4,
-    bottom: 40
   },
   input: {
     backgroundColor: '#f7fafc',
