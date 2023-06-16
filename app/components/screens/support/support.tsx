@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Padding } from '../../../components/ui/Padding';
 import { Layout } from '../../../components/layout/Layout';
 import { Header } from './Header/Header';

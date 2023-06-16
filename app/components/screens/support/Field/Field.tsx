@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   StyleSheet,
   TextInput,
   Pressable,
@@ -38,7 +37,6 @@ export const Field = () => {
         placeholder='Enter your message'
         onChangeText={setMessage}
         value={message}
-        showSoftInputOnFocus={false}
         autoCapitalize='none'
         style={styles.input}
       />

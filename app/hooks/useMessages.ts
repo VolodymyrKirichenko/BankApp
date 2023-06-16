@@ -8,7 +8,8 @@ export const useMessages = () => {
   const [messages, setMessages] = useState<IMessage[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => onSnapshot(query(collection(db, 'messages')),
+  useEffect(() => onSnapshot(
+    query(collection(db, 'messages'), orderBy('timestamp', 'asc')),
     snapshot => {
       setMessages(snapshot.docs.map(d =>
         d.data()?.timestamp ? (

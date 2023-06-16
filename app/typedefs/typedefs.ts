@@ -4,7 +4,7 @@ import { KeyboardTypeOptions } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 export type TypeName = 'Mono Black' | 'Mono White'
-export type TypeCurrency = 'UAH' | 'USD'
+export type TypeCurrency = 'UAH' | 'USD' | 'EUR' | 'PLN'
 
 export interface IStory {
   _id: string,
@@ -99,6 +99,29 @@ export interface IMessage {
   text: string,
   userId: string,
   timestamp: any,
+}
+
+export interface IMoreItem {
+  title: string,
+  description: string,
+  iconName: keyof typeof MaterialIcons.glyphMap,
+  link: string
+}
+
+export interface Base {
+  currencyCodeA: number,
+  currencyCodeB: number,
+  date: number,
+  rateBuy: number,
+  rateCross: number,
+  rateSell: number
+}
+
+export interface Rates {
+  USD: number,
+  EUR: number,
+  PLN: number,
+  UAH: number
 }
 
 export interface IOtherItem extends Pick<IFooterItem, 'iconName'> {

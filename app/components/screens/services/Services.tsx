@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
     fontFamily: 'mt-bold',
     fontSize: 24,
     textAlign: 'center',
-    marginBottom: 24,
+    marginVertical: 24,
   },
 })

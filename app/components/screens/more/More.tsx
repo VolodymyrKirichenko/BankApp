@@ -1,10 +1,21 @@
-import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { FC } from 'react';
+import { Menu } from './Menu/Menu';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { ExchangeRate } from './ExchangeRate/ExchangeRate';
 
-export const More: FC = ({ navigation }: any) => {
+export const More: FC = () => {
   return (
-    <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
-      <Text style={{top: 50}}>More</Text>
-    </TouchableWithoutFeedback>
+    <SafeAreaView style={styles.container}>
+      <ExchangeRate />
+
+      <Menu />
+    </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 20
+  }
+})
