@@ -5,7 +5,7 @@ import { TypeName } from '../typedefs/typedefs';
 
 export const useSendMoney = () => {
   const [showModal, setShowModal] = useState(false);
-  const [cardName, setCardName] = useState<TypeName>();
+  const [cardName, setCardName] = useState<TypeName>({} as TypeName);
 
   const handleTransferPress = () => {
     setShowModal(true);

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { FC } from 'react';
 import { IAccount } from '../../../../../typedefs/typedefs';
 import { Currency } from './Currency';
