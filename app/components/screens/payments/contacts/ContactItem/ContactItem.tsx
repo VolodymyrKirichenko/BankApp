@@ -4,12 +4,13 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { IContact } from '../../../../../typedefs/typedefs';
 import { Avatar } from '../../../../ui/Avatar';
 import { useAccounts } from '../../../../../hooks/useAccounts';
 import { handleTransfer } from '../../handleTransfer';
 import { ModalWindow } from '../../../../ui/ModalWindow';
+import { useSendMoney } from '../../../../../hooks/useSendMoney';
 
 interface Props {
   contact: IContact,
@@ -19,22 +20,29 @@ export const ContactItem: FC<Props> = (props) => {
   const { contact } = props;
   const { accounts } = useAccounts();
   const [transferAmount, setTransferAmount] = useState('');
-  const [showModal, setShowModal] = useState(false);
 
-  const handleTransferPress = () => {
-    setShowModal(true);
-  };
+  const {
+    setCardName,
+    cardName,
+    setShowModal,
+    showModal,
+    sendMoney
+  } = useSendMoney();
 
-  const handleTransferConfirm = async () => {
-    await handleTransfer(accounts[0], contact.cardNumber, transferAmount);
+  const handleTransferConfirm = useCallback(async (transferAmount: string) => {
+    const cardNumber = accounts.find(el => el.name === cardName);
+
+    if (cardNumber) {
+      await handleTransfer(cardNumber, contact.cardNumber, transferAmount);
+    }
 
     setTransferAmount('');
     setShowModal(false);
-  };
+  }, [cardName, setCardName]);
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={handleTransferPress}>
+      <Pressable onPress={sendMoney}>
         <Avatar name={contact.displayName} size={'large'} />
 
         <Text style={styles.text}>{contact.displayName}</Text>
@@ -45,7 +53,7 @@ export const ContactItem: FC<Props> = (props) => {
         setShowModal={setShowModal}
         setTransferAmount={setTransferAmount}
         transferAmount={transferAmount}
-        handleTransferConfirm={handleTransferConfirm}
+        handleTransferConfirm={() => handleTransferConfirm(transferAmount)}
       />
     </View>
   );

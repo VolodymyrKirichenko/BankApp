@@ -10,7 +10,7 @@ import { BOX_SHADOW } from '../../../../utils/styles';
 
 export const ExchangeRate: FC = () => {
   const [base, setBase] = useState<Base[]>([]);
-  const [realRates, setRealRates] = useState({} as Omit<Rates, 'UAH'>);//{"EUR": 41.2507, "PLN": 0, "USD": 37.4406}
+  const [realRates, setRealRates] = useState({} as Omit<Rates, 'UAH'>);
 
   const fetchExchangeRate = useCallback(async () => {
     try {

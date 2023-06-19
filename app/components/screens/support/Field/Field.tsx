@@ -37,7 +37,7 @@ export const Field = () => {
   };
 
   return (
-    <View style={[styles.container, { bottom: isKeyPress ? 100 : 40 }]}>
+    <View style={[styles.container, { bottom: isKeyPress ? 90 : 40 }]}>
       <TextInput
         placeholder='Enter your message'
         onChangeText={setMessage}

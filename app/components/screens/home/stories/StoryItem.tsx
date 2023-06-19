@@ -28,7 +28,7 @@ export const StoryItem: FC<Props> = (props) => {
           source={{ uri: story.images[0] }}
           resizeMode='cover'
           style={styles.image}
-          imageStyle={{ borderRadius: 12 }}
+          imageStyle={{ borderRadius: 8 }}
         >
           <Text style={styles.text}>{story.heading}</Text>
         </ImageBackground>
@@ -43,9 +43,8 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 12,
     marginLeft: 16,
-    borderWidth: 1,
+    borderWidth: 3,
     borderColor: '#00f',
-    padding: 5
   },
   image: {
     width: '100%',
