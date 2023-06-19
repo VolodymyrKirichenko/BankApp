@@ -1,16 +1,23 @@
-import { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { handleTransfer } from '../../../payments/handleTransfer';
 import { useAccounts } from '../../../../../hooks/useAccounts';
 import { Button } from '../../../../../components/ui/Button';
 import { ModalWindow } from '../../../../ui/ModalWindow';
+import { useSendMoney } from '../../../../../hooks/useSendMoney';
 
 export const TransferByCardNumber: FC = () => {
   const [transferAmount, setTransferAmount] = useState('');
   const [cardNumber, setCardNumber] = useState('');
-  const [showModal, setShowModal] = useState(false);
 
   const { accounts } = useAccounts();
+  const {
+    setCardName,
+    cardName,
+    setShowModal,
+    showModal,
+    sendMoney
+  } = useSendMoney();
 
   const addSpacesToCardNumber = (cardNumber: string) => {
     const cardNumberArray = Array.from(cardNumber);
@@ -24,21 +31,25 @@ export const TransferByCardNumber: FC = () => {
     }).join('');
   };
 
-  const handleTransferConfirm = async () => {
+  const handleTransferConfirm = useCallback(async (cardNumber: string, transferAmount: string) => {
     const cardNumberWithSpaces = addSpacesToCardNumber(cardNumber);
-    await handleTransfer(accounts[0], cardNumberWithSpaces, transferAmount);
+    const cardN = accounts.find(el => el.name === cardName);
+
+    if (cardN) {
+      await handleTransfer(cardN, cardNumberWithSpaces, transferAmount);
+    }
 
     setCardNumber('');
     setTransferAmount('');
     setShowModal(false);
-  };
+  }, [cardName, setCardName]);
 
   return (
     <>
       <View style={styles.button}>
         <Button
           title='U wanna send some money on card?'
-          onPress={() => setShowModal(true)}
+          onPress={sendMoney}
         />
       </View>
 
@@ -49,7 +60,7 @@ export const TransferByCardNumber: FC = () => {
         transferAmount={transferAmount}
         setCardNumber={setCardNumber}
         cardNumber={cardNumber}
-        handleTransferConfirm={handleTransferConfirm}
+        handleTransferConfirm={() => handleTransferConfirm(cardNumber, transferAmount)}
         needTwo={true}
       />
     </>
