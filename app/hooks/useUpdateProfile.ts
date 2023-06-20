@@ -4,7 +4,7 @@ import { db } from '../utils/firebase';
 import { doc, updateDoc } from '@firebase/firestore';
 import { Alert } from 'react-native';
 
-export const useUpdateProfile = (name: string, docId: string) => {
+export const useUpdateProfile = (name: string, realAvatar: string, docId: string) => {
   const { user } = useAuth();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -22,6 +22,7 @@ export const useUpdateProfile = (name: string, docId: string) => {
 
       await updateDoc(docRef, {
         displayName: name,
+        avatar: realAvatar,
       })
 
       setIsSuccess(true);

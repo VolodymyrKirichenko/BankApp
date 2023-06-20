@@ -33,11 +33,19 @@ export const useProfile = () => {
 
   const value = useMemo(() => ({
     realAvatar,
+    setRealAvatar,
     profile,
     isLoading,
     name,
     setName,
-  }), [profile, isLoading, name, setName, realAvatar])
+  }), [
+    profile,
+    isLoading,
+    name,
+    setName,
+    realAvatar,
+    setRealAvatar
+  ])
 
   return value;
 }

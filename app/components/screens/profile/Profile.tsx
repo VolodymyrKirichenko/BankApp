@@ -10,20 +10,22 @@ import { Button } from '../../../components/ui/Button';
 import { useAuth } from '../../../hooks/useAuth';
 import { useUpdateProfile } from '../../../hooks/useUpdateProfile';
 
-export const Profile: FC = ({ navigation }: any) => {
+export const Profile: FC = () => {
   const { logout } = useAuth();
   const {
     name,
     setName,
     profile,
-    isLoading: isProfileLoading
+    isLoading: isProfileLoading,
+    realAvatar,
+    setRealAvatar
   } = useProfile();
 
   const {
     isLoading,
     isSuccess,
     updateProfile,
-  } = useUpdateProfile(name, profile.docId);
+  } = useUpdateProfile(name, realAvatar, profile.docId);
 
   return (
     <Layout>
@@ -46,6 +48,12 @@ export const Profile: FC = ({ navigation }: any) => {
               onChange={setName}
               val={name}
               placeholder='Enter name'
+            />
+
+            <Field
+              onChange={setRealAvatar}
+              val={realAvatar}
+              placeholder='Enter news avatars uri'
             />
 
             <Button
