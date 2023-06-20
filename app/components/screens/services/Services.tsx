@@ -11,8 +11,6 @@ import { ServiceItem } from './ServiceItem/ServiceItem';
 export const Services: FC = () => {
   return (
     <Layout>
-      <Text style={styles.text}>Lviv</Text>
-
       <View style={styles.container}>
         {services.map(service => (
           <ServiceItem

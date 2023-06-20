@@ -10,7 +10,7 @@ export const Contacts: FC = () => {
   const { contacts, isLoading } = useContacts();
 
   return (
-    <View style={styles.main}>
+    <View>
       <TransferByCardNumber />
 
       <SubHeading text='Phone transfers' />
@@ -36,9 +36,6 @@ export const Contacts: FC = () => {
 }
 
 const styles = StyleSheet.create({
-  main: {
-    marginVertical: 32,
-  },
   scroll: {
     marginTop: 20,
   }

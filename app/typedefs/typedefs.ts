@@ -20,6 +20,7 @@ export interface IData {
 export interface IAvatar {
   name?: string | null,
   size: 'small' | 'large',
+  icon?: string,
 }
 
 export interface IButton {
@@ -40,7 +41,8 @@ export interface IField {
 export interface IProfile {
   _id: string,
   displayName: string,
-  docId: string
+  docId: string,
+  avatar: string
 }
 
 export interface ActiveStories {

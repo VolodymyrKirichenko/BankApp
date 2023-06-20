@@ -11,6 +11,7 @@ import { BOX_SHADOW } from '../../../../utils/styles';
 export const ExchangeRate: FC = () => {
   const [base, setBase] = useState<Base[]>([]);
   const [realRates, setRealRates] = useState({} as Omit<Rates, 'UAH'>);
+  const values: TypeCurrency[] = ['USD' , 'EUR' , 'PLN']
 
   const fetchExchangeRate = useCallback(async () => {
     try {
@@ -24,25 +25,23 @@ export const ExchangeRate: FC = () => {
   }, []);
 
   const findExchangeRate = useCallback(() => {
-    const rates = {} as Rates;
-
-    values.forEach((el) => {
+    const rates = values.reduce((acc, el) => {
       const ISO = getCurrencyCode(el);
 
       const rate = base.find((el) => el.currencyCodeA === ISO && el.currencyCodeB === 980);
 
-      rates[el] = rate?.rateSell || 0;
-    });
+      acc[el] = rate?.rateSell || 0;
+      return acc;
+    }, {} as Rates);
 
     setRealRates(rates);
   }, [base]);
 
 
+
   useEffect(() => {
     fetchExchangeRate();
   }, []);
-
-  const values: TypeCurrency[] = ['USD' , 'EUR' , 'PLN']
 
   useEffect(() => {
     findExchangeRate();

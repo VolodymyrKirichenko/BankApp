@@ -68,12 +68,6 @@ export const TransferByCardNumber: FC = () => {
 }
 
 const styles = StyleSheet.create({
-  input: {
-    width: '80%',
-    borderWidth: 1,
-    padding: 10,
-    marginVertical: 10,
-  },
   button: {
     width: '100%',
     alignItems: 'center'

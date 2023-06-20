@@ -5,7 +5,7 @@ import { Padding } from '../../../../components/ui/Padding';
 import { Loader } from '../../../../components/ui/Loader';
 import { AccountsItem } from './AccountsItem/AccountItem';
 
-export const Accounts: FC = ({ navigation }: any) => {
+export const Accounts: FC = () => {
   const { accounts, isLoading } = useAccounts();
 
   return (

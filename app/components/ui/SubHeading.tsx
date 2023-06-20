@@ -18,7 +18,6 @@ export const SubHeading: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   text: {
-    marginTop: 20,
     fontSize: 22,
     fontWeight: 'bold',
   }

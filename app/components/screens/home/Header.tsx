@@ -1,14 +1,14 @@
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { FC } from 'react';
 import { Padding } from '../../../components/ui/Padding';
-import { Avatar } from '../../../components/ui/Avatar';
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useProfile } from '../../../hooks/useProfile';
 import { Loader } from '../../../components/ui/Loader';
+import { ModifyAvatar } from '../../../components/ui/ModifyAvatar';
 
 export const Header: FC = () => {
-  const { isLoading, name } = useProfile();
+  const { isLoading, name, realAvatar } = useProfile();
   const { navigate } = useNavigation();
 
   const navigateToProfile = () => {
@@ -17,7 +17,7 @@ export const Header: FC = () => {
 
   return isLoading ? <Loader/> : (
     <Padding style={styles.main}>
-      <Avatar name={name} size='large' />
+      <ModifyAvatar icon={realAvatar} size='large' />
 
       <TouchableOpacity
         style={styles.name}

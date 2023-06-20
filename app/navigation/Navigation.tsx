@@ -44,8 +44,19 @@ export const Navigation: FC = () => {
           {user ? (
             <>
               <Stack.Screen name='Auth' component={Auth} />
-              <Stack.Screen name='Payments' component={Payments} />
-              <Stack.Screen name='Services' component={Services} />
+
+              <Stack.Screen
+                name='Payments'
+                component={Payments}
+                options={{ headerShown: true }}
+              />
+
+              <Stack.Screen
+                name='Services'
+                component={Services}
+                options={{ headerShown: true }}
+              />
+
               <Stack.Screen name='Support' component={Support} />
               <Stack.Screen name='More' component={More} />
               <Stack.Screen name='Home' component={Home} />
@@ -53,8 +64,7 @@ export const Navigation: FC = () => {
             </>
           ) : (
             <Stack.Screen name='Auth' component={Auth} />
-          )
-          }
+          )}
         </Stack.Navigator>
       </NavigationContainer>
 

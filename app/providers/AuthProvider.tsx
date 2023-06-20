@@ -30,7 +30,8 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
       await addDoc(collection(db, 'users'), {
         _id: user.uid,
-        displayName: 'Noname'
+        displayName: 'Noname',
+        avatar: 'https://static-00.iconduck.com/assets.00/user-avatar-icon-512x512-vufpcmdn.png',
       })
     } catch (error: any) {
       Alert.alert('Error reg:', error.message)

@@ -14,6 +14,7 @@ export const useProfile = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [profile, setProfile] = useState<IProfile>({} as IProfile);
   const [name, setName] = useState('');
+  const [realAvatar, setRealAvatar] = useState('');
 
   const { user } = useAuth();
 
@@ -21,20 +22,22 @@ export const useProfile = () => {
     where('_id', '==', user?.uid), limit(1)), snapshot => {
       const profile = snapshot.docs.map(el => ({
         ...(el.data() as IProfile),
-        docId: el.id
+        docId: el.id,
       }))[0]
 
     setProfile(profile);
     setName(profile.displayName);
     setIsLoading(false);
+    setRealAvatar(profile.avatar);
   }), [])
 
   const value = useMemo(() => ({
+    realAvatar,
     profile,
     isLoading,
     name,
-    setName
-  }), [profile, isLoading, name, setName])
+    setName,
+  }), [profile, isLoading, name, setName, realAvatar])
 
   return value;
 }
