@@ -1,17 +1,16 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { FC } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { Layout } from '../../../components/layout/Layout';
 import { Heading } from '../../../components/ui/Heading';
 import { Padding } from '../../../components/ui/Padding';
 import { useProfile } from '../../../hooks/useProfile';
 import { Loader } from '../../../components/ui/Loader';
-import { Field } from '../../../components/ui/Field';
-import { Button } from '../../../components/ui/Button';
-import { useAuth } from '../../../hooks/useAuth';
 import { useUpdateProfile } from '../../../hooks/useUpdateProfile';
+import { ProfileContent } from './ProfileContent/ProfileContent';
 
 export const Profile: FC = () => {
-  const { logout } = useAuth();
+  const [showModal, setShowModal] = useState(false);
+
   const {
     name,
     setName,
@@ -26,6 +25,15 @@ export const Profile: FC = () => {
     isSuccess,
     updateProfile,
   } = useUpdateProfile(name, realAvatar, profile.docId);
+
+  const handleShowModal = useCallback(() => {
+    setShowModal(prevState => !prevState);
+  }, [])
+
+  const handleChangeAvatar = useCallback((uri: string) => {
+    setRealAvatar(uri);
+    handleShowModal();
+  }, [])
 
   return (
     <Layout>
@@ -43,30 +51,16 @@ export const Profile: FC = () => {
         {(isProfileLoading || isLoading) ? (
           <Loader />
         ) : (
-          <>
-            <Field
-              onChange={setName}
-              val={name}
-              placeholder='Enter name'
-            />
-
-            <Field
-              onChange={setRealAvatar}
-              val={realAvatar}
-              placeholder='Enter news avatars uri'
-            />
-
-            <Button
-              onPress={updateProfile}
-              title='Update profile'
-            />
-
-            <Button
-              onPress={logout}
-              title='Logout'
-              colors={['lightGrey', '#D6D8DB']}
-            />
-          </>
+          <ProfileContent
+            handleChangeAvatar={handleChangeAvatar}
+            showModal={showModal}
+            updateProfile={updateProfile}
+            handleShowModal={handleShowModal}
+            name={name}
+            setName={setName}
+            realAvatar={realAvatar}
+            setRealAvatar={setRealAvatar}
+          />
         )}
       </Padding>
     </Layout>

@@ -21,6 +21,7 @@ export interface IAvatar {
   name?: string | null,
   size: 'small' | 'large',
   icon?: string,
+  onChangeAvatar?: (uri: string) => void,
 }
 
 export interface IButton {
@@ -76,6 +77,11 @@ export interface IAsyncAlert {
 export interface IFooterItem {
   iconName: keyof typeof AntDesign.glyphMap,
   title: keyof TypeRootStackParamList,
+}
+
+export interface Avatar {
+  id: number,
+  avatar: string,
 }
 
 export interface IContact {

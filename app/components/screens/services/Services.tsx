@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   StyleSheet
 } from 'react-native';
 import { FC } from 'react';
@@ -28,11 +27,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center'
-  },
-  text: {
-    fontFamily: 'mt-bold',
-    fontSize: 24,
-    textAlign: 'center',
-    marginVertical: 24,
   },
 })
