@@ -27,6 +27,7 @@ export const useContacts = () => {
             };
 
             let displayName = '';
+            let avatar = '';
             const q = query(
               collection(db, 'users'),
               where('_id', '==', data.userId)
@@ -36,12 +37,14 @@ export const useContacts = () => {
 
             querySnapshot.forEach((doc) => {
               displayName = (doc.data() as IProfile).displayName;
+              avatar = (doc.data() as IProfile).avatar;
             });
 
             return {
               ...data,
               _id: d.id,
               displayName,
+              avatar,
             };
           })
         );

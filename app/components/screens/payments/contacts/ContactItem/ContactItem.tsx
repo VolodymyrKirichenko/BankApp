@@ -6,11 +6,11 @@ import {
 } from 'react-native';
 import { FC, useCallback, useState } from 'react';
 import { IContact } from '../../../../../typedefs/typedefs';
-import { Avatar } from '../../../../ui/Avatar';
 import { useAccounts } from '../../../../../hooks/useAccounts';
 import { handleTransfer } from '../../handleTransfer';
 import { ModalWindow } from '../../../../ui/ModalWindow';
 import { useSendMoney } from '../../../../../hooks/useSendMoney';
+import { ModifyAvatar } from '../../../../../components/ui/ModifyAvatar';
 
 interface Props {
   contact: IContact,
@@ -43,7 +43,7 @@ export const ContactItem: FC<Props> = (props) => {
   return (
     <View style={styles.container}>
       <Pressable onPress={sendMoney}>
-        <Avatar name={contact.displayName} size={'large'} />
+        <ModifyAvatar size={'large'} icon={contact.avatar}/>
 
         <Text style={styles.text}>{contact.displayName}</Text>
       </Pressable>
