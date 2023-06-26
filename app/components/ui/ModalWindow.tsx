@@ -12,6 +12,7 @@ interface Props {
   transferAmount: string,
   setTransferAmount: Dispatch<SetStateAction<string>>,
   handleTransferConfirm: () => void,
+  handleCardNumberChange: (text: string) => void,
 }
 
 export const ModalWindow: FC<Props> = (props) => {
@@ -20,10 +21,10 @@ export const ModalWindow: FC<Props> = (props) => {
     showModal,
     cardNumber,
     setShowModal,
-    setCardNumber,
     transferAmount,
     setTransferAmount,
     handleTransferConfirm,
+    handleCardNumberChange
   } = props;
 
   return (
@@ -33,7 +34,7 @@ export const ModalWindow: FC<Props> = (props) => {
           <Field
             val={cardNumber}
             placeholder={`Enter the recipient's card number`}
-            onChange={setCardNumber}
+            onChange={handleCardNumberChange}
             keyboardType="numeric"
           />
         )}

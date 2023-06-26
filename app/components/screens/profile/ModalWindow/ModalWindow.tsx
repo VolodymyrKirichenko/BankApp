@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Layout } from '../../../../components/layout/Layout';
-import { Modal, StyleSheet, View } from 'react-native';
+import { FlatList, Modal, StyleSheet, View } from 'react-native';
 import { avatars } from '../avatars';
 import { AvatarsItem } from '../AvatarsItem/AvatarsItem';
 
@@ -14,26 +14,20 @@ export const ModalWindow: FC<Props> = (props) => {
 
   return (
     <Modal visible={showModal}>
-      <Layout isScrollView={true}>
-        <View style={styles.container}>
-          {avatars.map(avatar => (
+      <Layout isScrollView={false}>
+        <FlatList
+          data={avatars}
+          renderItem={({ item }) => (
             <AvatarsItem
-              key={avatar.id}
-              icon={avatar}
+              icon={item}
               onChangeAvatar={handleChangeAvatar}
             />
-          ))}
-        </View>
+          )}
+          keyExtractor={item => String(item.id)}
+          numColumns={4}
+          style={{ paddingHorizontal: 20 }}
+        />
       </Layout>
     </Modal>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-})

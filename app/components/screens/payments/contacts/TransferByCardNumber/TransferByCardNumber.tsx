@@ -19,24 +19,18 @@ export const TransferByCardNumber: FC = () => {
     sendMoney
   } = useSendMoney();
 
-  const addSpacesToCardNumber = (cardNumber: string) => {
-    const cardNumberArray = Array.from(cardNumber);
-
-    return cardNumberArray.map((el, index) => {
-      if ((index + 1) % 4 === 0 && index !== cardNumberArray.length - 1) {
-        return el + ' ';
-      } else {
-        return el;
-      }
-    }).join('');
+  const handleCardNumberChange = (text: string) => {
+    const inputText = text.replace(/\D/g, '').substring(0, 16);
+    const splitText = inputText.match(/.{1,4}/g);
+    const formattedText = splitText ? splitText.join(' ') : '';
+    setCardNumber(formattedText);
   };
 
   const handleTransferConfirm = useCallback(async (cardNumber: string, transferAmount: string) => {
-    const cardNumberWithSpaces = addSpacesToCardNumber(cardNumber);
     const cardN = accounts.find(el => el.name === cardName);
 
     if (cardN) {
-      await handleTransfer(cardN, cardNumberWithSpaces, transferAmount);
+      await handleTransfer(cardN, cardNumber, transferAmount);
     }
 
     setCardNumber('');
@@ -62,6 +56,7 @@ export const TransferByCardNumber: FC = () => {
         cardNumber={cardNumber}
         handleTransferConfirm={() => handleTransferConfirm(cardNumber, transferAmount)}
         needTwo={true}
+        handleCardNumberChange={handleCardNumberChange}
       />
     </>
   )

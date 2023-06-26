@@ -24,7 +24,7 @@ export const useSendMoney = () => {
         },
       })
 
-      setCardName(cardType as any);
+      setCardName(cardType as TypeName);
       handleTransferPress();
     } catch (error: any) {
       Alert.alert('Error selecting', error.message)
