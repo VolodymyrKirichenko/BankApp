@@ -4,24 +4,24 @@ import {
   Pressable,
   StyleSheet,
   ImageBackground
-} from 'react-native';
-import { FC } from 'react';
-import { IStory } from '../../../../typedefs/typedefs';
-import { useData } from '../../../../hooks/useData';
+} from 'react-native'
+import { FC } from 'react'
+import { IStory } from '../../../../typedefs/typedefs'
+import { useData } from '../../../../hooks/useData'
 
 interface Props {
-  story: IStory,
+  story: IStory
 }
 
 export const StoryItem: FC<Props> = (props) => {
-  const { story } = props;
+  const { story } = props
 
-  const { setActiveStories } = useData();
+  const { setActiveStories } = useData()
 
   return (
     <Pressable
       style={{ alignSelf: 'flex-start' }}
-      onPress={() => setActiveStories(story)}
+      onPress={() => { setActiveStories(story) }}
     >
       <View style={styles.container}>
         <ImageBackground
@@ -44,12 +44,12 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginLeft: 16,
     borderWidth: 3,
-    borderColor: '#00f',
+    borderColor: '#00f'
   },
   image: {
     width: '100%',
     height: '100%',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-end'
   },
   text: {
     color: 'white',

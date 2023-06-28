@@ -1,29 +1,29 @@
-import { FC } from 'react';
+import { FC } from 'react'
 import {
   Modal,
   StyleSheet,
   View,
   TextInput
-} from 'react-native';
-import { useGeneratePassword } from '../../../../hooks/useGeneratePassword';
-import { Button } from '../../../../components/ui/Button';
-import { PasswordSettings } from '../../../ui/PasswordSettings';
-import { usePassword } from '../../../../hooks/usePassword';
+} from 'react-native'
+import { useGeneratePassword } from '../../../../hooks/useGeneratePassword'
+import { Button } from '../../../../components/ui/Button'
+import { PasswordSettings } from '../../../ui/PasswordSettings'
+import { usePassword } from '../../../../hooks/usePassword'
 
 interface Props {
-  isVisible: boolean,
+  isVisible: boolean
 }
 
 export const AuthModal: FC<Props> = (props) => {
-  const { isVisible } = props;
+  const { isVisible } = props
 
   const {
     password,
     createNewPassword,
-    handleChangeModalVisible,
-  } = useGeneratePassword();
+    handleChangeModalVisible
+  } = useGeneratePassword()
 
-  const { passwordSettings } = usePassword();
+  const { passwordSettings } = usePassword()
 
   return (
     <Modal visible={isVisible} animationType="slide">
@@ -36,7 +36,7 @@ export const AuthModal: FC<Props> = (props) => {
         </View>
 
         {passwordSettings.map(input => {
-          const { isCondition, condition, handleChange } = input;
+          const { isCondition, condition, handleChange } = input
 
           return (
             <PasswordSettings
@@ -59,14 +59,14 @@ export const AuthModal: FC<Props> = (props) => {
           <View style={{ flex: 1 }}>
             <Button
               title='Confirm'
-              onPress={() => handleChangeModalVisible(true)}
+              onPress={() => { handleChangeModalVisible(true) }}
             />
           </View>
 
           <View style={{ flex: 1 }}>
             <Button
               title='Cancel'
-              onPress={() => handleChangeModalVisible()}
+              onPress={() => { handleChangeModalVisible() }}
             />
           </View>
         </View>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   item: {
     width: '100%',
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#EDF2EF',
     marginTop: 10,
     padding: 10,
-    flex: 1,
+    flex: 1
   },
   buttonsFlex: {
     flexDirection: 'row',
@@ -101,6 +101,6 @@ const styles = StyleSheet.create({
     gap: 10
   },
   createButton: {
-    width: '90%',
+    width: '90%'
   }
 })

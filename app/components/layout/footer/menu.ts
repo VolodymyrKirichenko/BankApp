@@ -1,24 +1,24 @@
-import { IFooterItem } from '../../../typedefs/typedefs';
+import { IFooterItem } from '../../../typedefs/typedefs'
 
 export const menu: IFooterItem[] = [
   {
     iconName: 'creditcard',
-    title: 'Home',
+    title: 'Home'
   },
   {
     iconName: 'pay-circle1',
-    title: 'Payments',
+    title: 'Payments'
   },
   {
     iconName: 'switcher',
-    title: 'Services',
+    title: 'Services'
   },
   {
     iconName: 'message1',
-    title: 'Support',
+    title: 'Support'
   },
   {
     iconName: 'ellipsis1',
-    title: 'More',
-  },
+    title: 'More'
+  }
 ]

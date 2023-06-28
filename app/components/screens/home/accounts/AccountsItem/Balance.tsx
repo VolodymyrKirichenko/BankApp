@@ -1,18 +1,18 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { FC } from 'react';
-import { IAccount } from '../../../../../typedefs/typedefs';
+import { Text, View, StyleSheet } from 'react-native'
+import { FC } from 'react'
+import { IAccount } from '../../../../../typedefs/typedefs'
 
 interface Props {
-  account: IAccount,
+  account: IAccount
 }
 
 export const Balance: FC<Props> = (props) => {
-  const { account } = props;
+  const { account } = props
   const {
     balance,
     currency,
     name
-  } = account;
+  } = account
 
   return (
     <View style={styles.container}>
@@ -20,7 +20,7 @@ export const Balance: FC<Props> = (props) => {
       <Text style={styles.text2}>
         {Intl.NumberFormat(undefined, {
           currency,
-          style: 'currency',
+          style: 'currency'
         }).format(balance)}
       </Text>
     </View>
@@ -29,14 +29,14 @@ export const Balance: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '66%',
+    width: '66%'
   },
   text: {
-    fontSize: 15,
+    fontSize: 15
   },
   text2: {
     fontSize: 15,
     marginTop: 4,
-    fontWeight: 'bold',
-  },
+    fontWeight: 'bold'
+  }
 })

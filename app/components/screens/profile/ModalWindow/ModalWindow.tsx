@@ -1,16 +1,16 @@
-import { FC } from 'react';
-import { Layout } from '../../../../components/layout/Layout';
-import { FlatList, Modal, StyleSheet, View } from 'react-native';
-import { avatars } from '../avatars';
-import { AvatarsItem } from '../AvatarsItem/AvatarsItem';
+import { FC } from 'react'
+import { Layout } from '../../../../components/layout/Layout'
+import { FlatList, Modal } from 'react-native'
+import { avatars } from '../avatars'
+import { AvatarsItem } from '../AvatarsItem/AvatarsItem'
 
 interface Props {
-  showModal: boolean,
-  handleChangeAvatar: (uri: string) => void,
+  showModal: boolean
+  handleChangeAvatar: (uri: string) => void
 }
 
 export const ModalWindow: FC<Props> = (props) => {
-  const { showModal, handleChangeAvatar } = props;
+  const { showModal, handleChangeAvatar } = props
 
   return (
     <Modal visible={showModal}>

@@ -1,4 +1,4 @@
-import { Avatar } from '../../../typedefs/typedefs';
+import { Avatar } from '../../../typedefs/typedefs'
 
 export const avatars: Avatar[] = [
   {
@@ -240,5 +240,5 @@ export const avatars: Avatar[] = [
   {
     id: 60,
     avatar: 'https://media.istockphoto.com/id/612520134/zh/%E5%90%91%E9%87%8F/girl-icon-cartoon-single-avatar-people-icon.jpg?s=612x612&w=0&k=20&c=EB6F35bD0vqwZNN_oaY-R_lBuK8zKv_JRlhBE3tpRgg='
-  },
-];
+  }
+]

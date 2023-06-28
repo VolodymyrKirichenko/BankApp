@@ -1,11 +1,11 @@
-import { View, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native';
-import { FC } from 'react';
-import { IAvatar } from '../../typedefs/typedefs';
+import { View, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native'
+import { FC } from 'react'
+import { IAvatar } from '../../typedefs/typedefs'
 
 export const Avatar: FC<IAvatar> = (props) => {
-  const { size = 'small', icon, onChangeAvatar } = props;
+  const { size = 'small', icon, onChangeAvatar } = props
 
-  const isSmall = size === 'small';
+  const isSmall = size === 'small'
 
   return (
     <View
@@ -14,7 +14,7 @@ export const Avatar: FC<IAvatar> = (props) => {
       }]}
     >
       {icon && (
-        <TouchableWithoutFeedback onPress={() => onChangeAvatar ? onChangeAvatar(icon) : ''}>
+        <TouchableWithoutFeedback onPress={() => { onChangeAvatar ? onChangeAvatar(icon) : '' }}>
           <Image
             source={{ uri: icon }}
             style={styles.image}
@@ -40,6 +40,6 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
-    borderRadius: 50,
-  },
+    borderRadius: 50
+  }
 })

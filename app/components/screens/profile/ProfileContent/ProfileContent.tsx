@@ -1,18 +1,18 @@
-import { Dispatch, FC, SetStateAction } from 'react';
-import { Field } from '../../../../components/ui/Field';
-import { Button } from '../../../../components/ui/Button';
-import { ModalWindow } from '../ModalWindow/ModalWindow';
-import { useAuth } from '../../../../hooks/useAuth';
+import { Dispatch, FC, SetStateAction } from 'react'
+import { Field } from '../../../../components/ui/Field'
+import { Button } from '../../../../components/ui/Button'
+import { ModalWindow } from '../ModalWindow/ModalWindow'
+import { useAuth } from '../../../../hooks/useAuth'
 
 interface Props {
-  handleShowModal: () => void,
-  updateProfile: () => Promise<void>,
-  showModal: boolean,
-  handleChangeAvatar: (uri: string) => void,
-  name: string,
-  setName: Dispatch<SetStateAction<string>>,
-  realAvatar: string,
-  setRealAvatar: (uri: string) => void,
+  handleShowModal: () => void
+  updateProfile: () => Promise<void>
+  showModal: boolean
+  handleChangeAvatar: (uri: string) => void
+  name: string
+  setName: Dispatch<SetStateAction<string>>
+  realAvatar: string
+  setRealAvatar: (uri: string) => void
 }
 
 export const ProfileContent: FC<Props> = (props) => {
@@ -25,9 +25,9 @@ export const ProfileContent: FC<Props> = (props) => {
     name,
     setRealAvatar,
     realAvatar
-  } = props;
+  } = props
 
-  const { logout } = useAuth();
+  const { logout } = useAuth()
 
   return (
     <>

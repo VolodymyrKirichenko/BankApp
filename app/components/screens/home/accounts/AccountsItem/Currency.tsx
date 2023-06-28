@@ -1,14 +1,14 @@
-import { View, StyleSheet } from 'react-native';
-import { FC } from 'react';
-import { TypeCurrency } from '../../../../../typedefs/typedefs';
-import { FontAwesome } from '@expo/vector-icons';
+import { View, StyleSheet } from 'react-native'
+import { FC } from 'react'
+import { TypeCurrency } from '../../../../../typedefs/typedefs'
+import { FontAwesome } from '@expo/vector-icons'
 
 interface Props {
-  currency: TypeCurrency,
+  currency: TypeCurrency
 }
 
 export const Currency: FC<Props> = (props) => {
-  const { currency } = props;
+  const { currency } = props
 
   return (
     <View style={styles.mainCircle}>
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: 36,
-    height: 36,
+    height: 36
   },
   secondCircle: {
     borderRadius: 50,
@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: 20,
-    height: 20,
-  },
+    height: 20
+  }
 })

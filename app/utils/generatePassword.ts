@@ -3,35 +3,35 @@ export const generatePassword = (
   includeUpperCase: boolean,
   includeLowerCase: boolean,
   includeNumbers: boolean,
-  includeSpecialChars: boolean,
+  includeSpecialChars: boolean
 ) => {
-  let charset = '';
-  let password = '';
+  let charset = ''
+  let password = ''
 
   if (includeUpperCase) {
-    charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   }
 
   if (includeLowerCase) {
-    charset += 'abcdefghijklmnopqrstuvwxyz';
+    charset += 'abcdefghijklmnopqrstuvwxyz'
   }
 
   if (includeNumbers) {
-    charset += '0123456789';
+    charset += '0123456789'
   }
 
   if (includeSpecialChars) {
-    charset += '!@#$%^&*';
+    charset += '!@#$%^&*'
   }
 
   if (charset === '') {
-    return 'At least one character set must be included.';
+    return 'At least one character set must be included.'
   }
 
   for (let i = 0; i < length; i++) {
-    let randomIndex = Math.floor(Math.random() * charset.length);
-    password += charset.charAt(randomIndex);
+    const randomIndex = Math.floor(Math.random() * charset.length)
+    password += charset.charAt(randomIndex)
   }
 
-  return password;
+  return password
 }

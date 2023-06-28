@@ -3,13 +3,13 @@ import {
   TextInput,
   View,
   StyleSheet
-} from 'react-native';
-import { FC } from 'react';
+} from 'react-native'
+import { FC } from 'react'
 
 interface Props {
-  isCondition: boolean,
-  condition: string,
-  handleChange: () => void,
+  isCondition: boolean
+  condition: string
+  handleChange: () => void
 }
 
 export const PasswordSettings: FC<Props> = (props) => {
@@ -17,7 +17,7 @@ export const PasswordSettings: FC<Props> = (props) => {
     isCondition,
     condition,
     handleChange
-  } = props;
+  } = props
 
   return (
     <View style={styles.item}>
@@ -28,7 +28,7 @@ export const PasswordSettings: FC<Props> = (props) => {
 
       <Switch
         onValueChange={handleChange}
-        style={{ top: 5}}
+        style={{ top: 5 }}
         value={isCondition}
       />
     </View>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   item: {
     width: '100%',
     flexDirection: 'row',
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
   input: {
     fontFamily: 'mt-light',
@@ -47,6 +47,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#EDF2EF',
     marginTop: 10,
     padding: 10,
-    flex: 1,
-  },
+    flex: 1
+  }
 })

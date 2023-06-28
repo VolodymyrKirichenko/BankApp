@@ -1,4 +1,4 @@
-export type TypeRootStackParamList = {
+export interface TypeRootStackParamList {
   Auth: undefined
   Home: undefined
   Profile: undefined

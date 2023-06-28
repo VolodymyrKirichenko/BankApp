@@ -2,24 +2,24 @@ import {
   Text,
   Pressable,
   StyleSheet,
-  View,
-} from 'react-native';
-import { FC, useCallback, useState } from 'react';
-import { IContact } from '../../../../../typedefs/typedefs';
-import { useAccounts } from '../../../../../hooks/useAccounts';
-import { handleTransfer } from '../../handleTransfer';
-import { ModalWindow } from '../../../../ui/ModalWindow';
-import { useSendMoney } from '../../../../../hooks/useSendMoney';
-import { ModifyAvatar } from '../../../../../components/ui/ModifyAvatar';
+  View
+} from 'react-native'
+import { FC, useCallback, useState } from 'react'
+import { IContact } from '../../../../../typedefs/typedefs'
+import { useAccounts } from '../../../../../hooks/useAccounts'
+import { handleTransfer } from '../../handleTransfer'
+import { ModalWindow } from '../../../../ui/ModalWindow'
+import { useSendMoney } from '../../../../../hooks/useSendMoney'
+import { ModifyAvatar } from '../../../../../components/ui/ModifyAvatar'
 
 interface Props {
-  contact: IContact,
+  contact: IContact
 }
 
 export const ContactItem: FC<Props> = (props) => {
-  const { contact } = props;
-  const { accounts } = useAccounts();
-  const [transferAmount, setTransferAmount] = useState('');
+  const { contact } = props
+  const { accounts } = useAccounts()
+  const [transferAmount, setTransferAmount] = useState('')
 
   const {
     setCardName,
@@ -27,18 +27,18 @@ export const ContactItem: FC<Props> = (props) => {
     setShowModal,
     showModal,
     sendMoney
-  } = useSendMoney();
+  } = useSendMoney()
 
   const handleTransferConfirm = useCallback(async (transferAmount: string) => {
-    const cardNumber = accounts.find(el => el.name === cardName);
+    const cardNumber = accounts.find(el => el.name === cardName)
 
     if (cardNumber) {
-      await handleTransfer(cardNumber, contact.cardNumber, transferAmount);
+      await handleTransfer(cardNumber, contact.cardNumber, transferAmount)
     }
 
-    setTransferAmount('');
-    setShowModal(false);
-  }, [cardName, setCardName]);
+    setTransferAmount('')
+    setShowModal(false)
+  }, [cardName, setCardName])
 
   return (
     <View style={styles.container}>
@@ -53,26 +53,26 @@ export const ContactItem: FC<Props> = (props) => {
         setShowModal={setShowModal}
         setTransferAmount={setTransferAmount}
         transferAmount={transferAmount}
-        handleTransferConfirm={() => handleTransferConfirm(transferAmount)}
+        handleTransferConfirm={async () => { await handleTransferConfirm(transferAmount) }}
       />
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     marginLeft: 16,
     marginRight: 4,
-    alignContent: 'center',
+    alignContent: 'center'
   },
   text: {
     marginTop: 4,
-    fontSize: 14,
+    fontSize: 14
   },
   input: {
     width: '80%',
     borderWidth: 1,
     padding: 10,
-    marginVertical: 10,
-  },
-});
+    marginVertical: 10
+  }
+})

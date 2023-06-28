@@ -1,20 +1,20 @@
-import { useEffect, useState } from 'react';
-import { IContact, IProfile } from '../typedefs/typedefs';
-import { useAuth } from './useAuth';
+import { useEffect, useState } from 'react'
+import { IContact, IProfile } from '../typedefs/typedefs'
+import { useAuth } from './useAuth'
 import {
   collection,
   getDocs,
   onSnapshot,
   query,
   where
-} from '@firebase/firestore';
-import { db } from '../utils/firebase';
+} from '@firebase/firestore'
+import { db } from '../utils/firebase'
 
 export const useContacts = () => {
-  const [contacts, setContacts] = useState<IContact[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [contacts, setContacts] = useState<IContact[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  const { user } = useAuth();
+  const { user } = useAuth()
 
   useEffect(() => {
     onSnapshot(
@@ -23,44 +23,43 @@ export const useContacts = () => {
         const contactsFire = await Promise.all(
           snapshot.docs.map(async (d) => {
             const data = d.data() as IContact & {
-              userId: string;
-            };
+              userId: string
+            }
 
-            let displayName = '';
-            let avatar = '';
+            let displayName = ''
+            let avatar = ''
             const q = query(
               collection(db, 'users'),
               where('_id', '==', data.userId)
-            );
+            )
 
-            const querySnapshot = await getDocs(q);
+            const querySnapshot = await getDocs(q)
 
             querySnapshot.forEach((doc) => {
-              displayName = (doc.data() as IProfile).displayName;
-              avatar = (doc.data() as IProfile).avatar;
-            });
+              displayName = (doc.data() as IProfile).displayName
+              avatar = (doc.data() as IProfile).avatar
+            })
 
             return {
               ...data,
               _id: d.id,
               displayName,
-              avatar,
-            };
+              avatar
+            }
           })
-        );
+        )
 
         setContacts(contactsFire.filter((v, i, a) => (
           a.findIndex(t => t.displayName === v.displayName) === i
-        )).filter(i => i.displayName));
+        )).filter(i => i.displayName))
 
-        setIsLoading(false);
+        setIsLoading(false)
       }
-    );
-  }, []);
+    )
+  }, [])
 
   return {
     contacts,
-    isLoading,
-  };
-};
-
+    isLoading
+  }
+}

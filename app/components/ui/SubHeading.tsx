@@ -1,13 +1,13 @@
-import { Text, StyleSheet } from 'react-native';
-import { FC } from 'react';
-import { Padding } from '../../components/ui/Padding';
+import { Text, StyleSheet } from 'react-native'
+import { FC } from 'react'
+import { Padding } from '../../components/ui/Padding'
 
 interface Props {
-  text: string,
+  text: string
 }
 
 export const SubHeading: FC<Props> = (props) => {
-  const { text } = props;
+  const { text } = props
 
   return (
     <Padding>
@@ -19,6 +19,6 @@ export const SubHeading: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   text: {
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   }
 })

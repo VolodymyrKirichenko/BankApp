@@ -1,19 +1,22 @@
-import { View, Text } from 'react-native';
-import { FC, Fragment } from 'react';
-import { useAccounts } from '../../../../hooks/useAccounts';
-import { Padding } from '../../../../components/ui/Padding';
-import { Loader } from '../../../../components/ui/Loader';
-import { AccountsItem } from './AccountsItem/AccountItem';
+import { View, Text } from 'react-native'
+import { FC, Fragment } from 'react'
+import { useAccounts } from '../../../../hooks/useAccounts'
+import { Padding } from '../../../../components/ui/Padding'
+import { Loader } from '../../../../components/ui/Loader'
+import { AccountsItem } from './AccountsItem/AccountItem'
 
 export const Accounts: FC = () => {
-  const { accounts, isLoading } = useAccounts();
+  const { accounts, isLoading } = useAccounts()
 
   return (
     <Padding>
-      {isLoading ? (
+      {isLoading
+        ? (
         <Loader />
-      ) : accounts.length ? (
-        accounts.map((account, index) => (
+          )
+        : accounts.length
+          ? (
+              accounts.map((account, index) => (
           <Fragment key={account._id}>
             <AccountsItem account={account} />
 
@@ -28,10 +31,11 @@ export const Accounts: FC = () => {
               />
             )}
           </Fragment>
-        ))
-      ) : (
+              ))
+            )
+          : (
         <Text>You don't have cards</Text>
-      )}
+            )}
     </Padding>
   )
 }

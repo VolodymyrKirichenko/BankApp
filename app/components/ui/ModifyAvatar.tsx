@@ -1,11 +1,11 @@
-import { View, StyleSheet, Image  } from 'react-native';
-import { FC } from 'react';
-import { IAvatar } from '../../typedefs/typedefs';
+import { View, StyleSheet, Image } from 'react-native'
+import { FC } from 'react'
+import { IAvatar } from '../../typedefs/typedefs'
 
 export const ModifyAvatar: FC<IAvatar> = (props) => {
-  const { size = 'small', icon } = props;
+  const { size = 'small', icon } = props
 
-  const isSmall = size === 'small';
+  const isSmall = size === 'small'
 
   return (
     <View
@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
-    borderRadius: 50,
-  },
+    borderRadius: 50
+  }
 })

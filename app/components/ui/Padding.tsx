@@ -1,17 +1,17 @@
-import { View, StyleSheet, ViewStyle  } from 'react-native';
-import { FC, ReactNode } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, ViewStyle } from 'react-native'
+import { FC, ReactNode } from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 interface Props {
-  children?: ReactNode,
-  style?: ViewStyle,
+  children?: ReactNode
+  style?: ViewStyle
 }
 
 export const Padding: FC<Props> = (props) => {
-  const { children, style } = props;
+  const { children, style } = props
 
   return (
-    <SafeAreaView  style={[styles.main, style]}>
+    <SafeAreaView style={[styles.main, style]}>
       {children}
     </SafeAreaView >
   )
@@ -20,6 +20,6 @@ export const Padding: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   main: {
     paddingLeft: 16,
-    paddingRight: 16,
-  },
+    paddingRight: 16
+  }
 })

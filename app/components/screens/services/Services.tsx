@@ -1,11 +1,11 @@
 import {
   View,
   StyleSheet
-} from 'react-native';
-import { FC } from 'react';
-import { Layout } from '../../../components/layout/Layout';
-import { services } from './data';
-import { ServiceItem } from './ServiceItem/ServiceItem';
+} from 'react-native'
+import { FC } from 'react'
+import { Layout } from '../../../components/layout/Layout'
+import { services } from './data'
+import { ServiceItem } from './ServiceItem/ServiceItem'
 
 export const Services: FC = () => {
   return (
@@ -27,5 +27,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center'
-  },
+  }
 })

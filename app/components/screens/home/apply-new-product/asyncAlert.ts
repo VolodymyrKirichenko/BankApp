@@ -1,8 +1,8 @@
-import { IAsyncAlert } from '../../../../typedefs/typedefs';
-import { Alert } from 'react-native';
+import { IAsyncAlert } from '../../../../typedefs/typedefs'
+import { Alert } from 'react-native'
 
-export const asyncAlert = ({ title, message, buttons }: IAsyncAlert) =>
-  new Promise(resolve => {
+export const asyncAlert = async ({ title, message, buttons }: IAsyncAlert) =>
+  await new Promise(resolve => {
     Alert.alert(title, message, [
       {
         text: buttons.text,
@@ -15,6 +15,6 @@ export const asyncAlert = ({ title, message, buttons }: IAsyncAlert) =>
         onPress: () => {
           resolve(buttons.resolveValueSecond)
         }
-      },
+      }
     ], { cancelable: false })
   })

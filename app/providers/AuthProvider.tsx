@@ -1,11 +1,10 @@
-import { createContext, useEffect, useMemo, useState, ReactNode } from 'react';
-import firebase from 'firebase/compat';
-import User = firebase.User;
-import { Alert } from 'react-native';
-import { auth, db, login, logout, register } from '../utils/firebase';
-import { collection, addDoc } from 'firebase/firestore';
-import { onAuthStateChanged } from 'firebase/auth';
-import { FC } from 'react';
+import { createContext, useEffect, useMemo, useState, ReactNode, FC } from 'react'
+import firebase from 'firebase/compat'
+import User = firebase.User
+import { Alert } from 'react-native'
+import { auth, db, login, logout, register } from '../utils/firebase'
+import { collection, addDoc } from 'firebase/firestore'
+import { onAuthStateChanged } from 'firebase/auth'
 
 interface IContext {
   user: User | null
@@ -18,73 +17,73 @@ interface IContext {
 export const AuthContext = createContext<IContext>({} as IContext)
 
 export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoadingInitial, setIsLoadingInitial] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState<User | null>(null)
+  const [isLoadingInitial, setIsLoadingInitial] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   const registerHandler = async (email: string, password: string) => {
-    setIsLoading(true);
+    setIsLoading(true)
 
     try {
-      const { user } = await register(email, password);
-
+      const { user } = await register(email, password)
+      // @ts-expect-error
       await addDoc(collection(db, 'users'), {
         _id: user.uid,
         displayName: 'Noname',
-        avatar: 'https://static-00.iconduck.com/assets.00/user-avatar-icon-512x512-vufpcmdn.png',
+        avatar: 'https://static-00.iconduck.com/assets.00/user-avatar-icon-512x512-vufpcmdn.png'
       })
     } catch (error: any) {
       Alert.alert('Error reg:', error.message)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
 
   const loginHandler = async (email: string, password: string) => {
-    setIsLoading(true);
+    setIsLoading(true)
 
     try {
-      await login(email, password);
+      await login(email, password)
     } catch (error: any) {
       Alert.alert('Error login:', error.message)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
 
   const logoutHandler = async () => {
-    setIsLoading(true);
+    setIsLoading(true)
 
     try {
-      await logout();
+      await logout()
     } catch (error: any) {
       Alert.alert('Error logout:', error)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user as User);
+      setUser(user as User)
 
-      setIsLoadingInitial(false);
-    });
+      setIsLoadingInitial(false)
+    })
 
-    return unsubscribe;
-  }, []);
+    return unsubscribe
+  }, [])
 
   const value = useMemo(() => ({
     user,
     isLoading,
     login: loginHandler,
     logout: logoutHandler,
-    register: registerHandler,
+    register: registerHandler
   }), [user, isLoading])
 
   return (
     <AuthContext.Provider value={value}>
       {!isLoadingInitial && children}
     </AuthContext.Provider>
-  );
+  )
 }

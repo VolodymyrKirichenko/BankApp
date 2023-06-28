@@ -1,37 +1,37 @@
-import { FC, useState } from 'react';
+import { FC, useState } from 'react'
 import {
   Text,
   Pressable,
   StyleSheet,
-  View,
-} from 'react-native';
-import { IOtherItem } from '../../../../../typedefs/typedefs';
-import { Icon } from './Icon';
-import { BOX_SHADOW } from '../../../../../utils/styles';
-import { handleTransfer } from '../../handleTransfer';
-import { useAccounts } from '../../../../../hooks/useAccounts';
-import { ModalWindow } from '../../../../ui/ModalWindow';
+  View
+} from 'react-native'
+import { IOtherItem } from '../../../../../typedefs/typedefs'
+import { Icon } from './Icon'
+import { BOX_SHADOW } from '../../../../../utils/styles'
+import { handleTransfer } from '../../handleTransfer'
+import { useAccounts } from '../../../../../hooks/useAccounts'
+import { ModalWindow } from '../../../../ui/ModalWindow'
 
 interface Props {
-  item: IOtherItem,
+  item: IOtherItem
 }
 
 export const OtherItem: FC<Props> = (props) => {
-  const { item } = props;
-  const { accounts } = useAccounts();
-  const [showModal, setShowModal] = useState(false);
-  const [transferAmount, setTransferAmount] = useState('');
+  const { item } = props
+  const { accounts } = useAccounts()
+  const [showModal, setShowModal] = useState(false)
+  const [transferAmount, setTransferAmount] = useState('')
 
   const handleTransferPress = () => {
-    setShowModal(true);
-  };
+    setShowModal(true)
+  }
 
   const handleTransferConfirm = async () => {
-    await handleTransfer(accounts[0], '5111 8234 5714 1749', transferAmount);
+    await handleTransfer(accounts[0], '5111 8234 5714 1749', transferAmount)
 
-    setTransferAmount('');
-    setShowModal(false);
-  };
+    setTransferAmount('')
+    setShowModal(false)
+  }
 
   return (
     <View>
@@ -52,8 +52,8 @@ export const OtherItem: FC<Props> = (props) => {
         handleTransferConfirm={handleTransferConfirm}
       />
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   main: {
@@ -64,12 +64,12 @@ const styles = StyleSheet.create({
     height: 96,
     backgroundColor: 'white',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   input: {
     width: '80%',
     borderWidth: 1,
     padding: 10,
-    marginVertical: 10,
-  },
-});
+    marginVertical: 10
+  }
+})

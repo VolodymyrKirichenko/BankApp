@@ -2,16 +2,16 @@ import {
   Text,
   TouchableHighlight,
   StyleSheet
-} from 'react-native';
-import { FC } from 'react';
-import { IButton } from '../../typedefs/typedefs';
+} from 'react-native'
+import { FC } from 'react'
+import { IButton } from '../../typedefs/typedefs'
 
 export const Button: FC<IButton> = (props) => {
   const {
     title,
     onPress,
-    colors = ['yellow', '#FBBF24'],
-  } = props;
+    colors = ['yellow', '#FBBF24']
+  } = props
 
   return (
     <TouchableHighlight

@@ -10,14 +10,14 @@ const gradients = [
   ['#FF4270', '#FE0040'],
   ['#F641AE', '#C11B80'],
   ['#D74339', '#B9271D'],
-  ['#FFBE01', '#FE5A00'],
+  ['#FFBE01', '#FE5A00']
 ]
 
 export const getRandomGradient = () => {
-  const min = 0;
-  const max = gradients.length - 1;
+  const min = 0
+  const max = gradients.length - 1
 
-  const randomNumber = Math.floor(Math.random() * (max - min) + min);
+  const randomNumber = Math.floor(Math.random() * (max - min) + min)
 
-  return gradients[randomNumber];
+  return gradients[randomNumber]
 }

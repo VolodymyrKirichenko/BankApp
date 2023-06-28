@@ -1,24 +1,24 @@
-import { IOtherItem } from '../../../../typedefs/typedefs';
+import { IOtherItem } from '../../../../typedefs/typedefs'
 
 export const otherItems: IOtherItem[] = [
   {
     iconName: 'mobile1',
-    title: 'Mobile',
+    title: 'Mobile'
   },
   {
     iconName: 'home',
-    title: 'Housing',
+    title: 'Housing'
   },
   {
     iconName: 'wifi',
-    title: 'Internet',
+    title: 'Internet'
   },
   {
     iconName: 'iconfontdesktop',
-    title: 'TV',
+    title: 'TV'
   },
   {
     iconName: 'car',
-    title: 'Transport',
+    title: 'Transport'
   }
 ]

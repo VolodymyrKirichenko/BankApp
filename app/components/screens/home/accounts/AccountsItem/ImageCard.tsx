@@ -3,26 +3,26 @@ import {
   ImageSourcePropType,
   StyleSheet,
   Text,
-  TouchableOpacity,
-} from 'react-native';
-import { FC, useCallback, useState } from 'react';
-import { IAccount } from '../../../../../typedefs/typedefs';
-import { ModalWindow } from '../ModalWindow/ModalWindow';
+  TouchableOpacity
+} from 'react-native'
+import { FC, useCallback, useState } from 'react'
+import { IAccount } from '../../../../../typedefs/typedefs'
+import { ModalWindow } from '../ModalWindow/ModalWindow'
 
 interface Props {
-  account: IAccount,
+  account: IAccount
 }
 
 export const ImageCard: FC<Props> = (props) => {
-  const { account } = props;
-  const { name, cardNumber } = account;
-  const [showModal, setShowModal] = useState(false);
+  const { account } = props
+  const { name, cardNumber } = account
+  const [showModal, setShowModal] = useState(false)
 
-  const imageBlack: ImageSourcePropType = require('../../../../../../assets/monobank_mc-word.png');
-  const imageWhite: ImageSourcePropType = require('../../../../../../assets/bila-n.jpg');
+  const imageBlack: ImageSourcePropType = require('../../../../../../assets/monobank_mc-word.png')
+  const imageWhite: ImageSourcePropType = require('../../../../../../assets/bila-n.jpg')
 
   const handleChangeModal = useCallback(() => {
-    setShowModal(prevState => !prevState);
+    setShowModal(prevState => !prevState)
   }, [setShowModal])
 
   return (
@@ -62,6 +62,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 5,
     left: 5,
-    fontWeight: '600',
-  },
+    fontWeight: '600'
+  }
 })

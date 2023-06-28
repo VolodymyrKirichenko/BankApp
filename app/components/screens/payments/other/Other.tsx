@@ -1,8 +1,8 @@
-import { View, StyleSheet, ScrollView } from 'react-native';
-import { FC } from 'react';
-import { SubHeading } from '../../../ui/SubHeading';
-import { otherItems } from './data';
-import { OtherItem } from './OtherItem/OtherItem';
+import { View, StyleSheet, ScrollView } from 'react-native'
+import { FC } from 'react'
+import { SubHeading } from '../../../ui/SubHeading'
+import { otherItems } from './data'
+import { OtherItem } from './OtherItem/OtherItem'
 
 export const Other: FC = () => {
   return (
@@ -24,6 +24,6 @@ export const Other: FC = () => {
 
 const styles = StyleSheet.create({
   scroll: {
-    paddingVertical: 20,
+    paddingVertical: 20
   }
 })

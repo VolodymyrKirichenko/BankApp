@@ -3,23 +3,23 @@ import {
   Text,
   Pressable,
   StyleSheet, Linking
-} from 'react-native';
-import { FC } from 'react';
-import { IMoreItem } from '../../../../../typedefs/typedefs';
-import { BOX_SHADOW } from '../../../../../utils/styles';
-import { MaterialIcons } from '@expo/vector-icons';
+} from 'react-native'
+import { FC } from 'react'
+import { IMoreItem } from '../../../../../typedefs/typedefs'
+import { BOX_SHADOW } from '../../../../../utils/styles'
+import { MaterialIcons } from '@expo/vector-icons'
 
 interface Props {
-  item: IMoreItem,
+  item: IMoreItem
 }
 
 export const MenuItem: FC<Props> = (props) => {
-  const { item } = props;
+  const { item } = props
 
   return (
     <Pressable
       style={[styles.container, BOX_SHADOW]}
-      onPress={() => Linking.openURL(item.link)}
+      onPress={async () => await Linking.openURL(item.link)}
     >
       <View style={styles.containerTwo}>
         <Text style={styles.textOne}>{item.title}</Text>
@@ -44,10 +44,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 16,
     justifyContent: 'space-between',
-    borderRadius: 20,
+    borderRadius: 20
   },
   containerTwo: {
-    width: '83.3%',
+    width: '83.3%'
   },
   containerThree: {
     borderRadius: 50,
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   textOne: {
     fontSize: 20,
@@ -65,6 +65,6 @@ const styles = StyleSheet.create({
   textTwo: {
     marginTop: 4,
     opacity: 0.9,
-    color: '#718096',
+    color: '#718096'
   }
 })

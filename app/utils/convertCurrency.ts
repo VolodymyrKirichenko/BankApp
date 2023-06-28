@@ -1,50 +1,47 @@
-import { TypeCurrency } from '../typedefs/typedefs';
+import { TypeCurrency } from '../typedefs/typedefs'
 
 export const getCurrencyCode = (currency: TypeCurrency): number => {
   switch (currency) {
     case 'USD':
-      return 840;
+      return 840
     case 'UAH':
-      return 980;
+      return 980
     case 'EUR':
-      return 978;
+      return 978
     case 'PLN':
-      return 985;
+      return 985
     default:
-      throw new Error('Невідома валюта');
+      throw new Error('Невідома валюта')
   }
-};
+}
 
 const findExchangeRate = (data: any, fromCurrency: TypeCurrency, toCurrency: TypeCurrency) => {
-  const currencyCodeA = getCurrencyCode(fromCurrency);
-  const currencyCodeB = getCurrencyCode(toCurrency);
+  const currencyCodeA = getCurrencyCode(fromCurrency)
+  const currencyCodeB = getCurrencyCode(toCurrency)
 
-  for(const item of data) {
-    if ((item.currencyCodeA === currencyCodeA || item.currencyCodeA === currencyCodeB)
-      && (item.currencyCodeB === currencyCodeA || item.currencyCodeB === currencyCodeB)) {
-
-      return item.rateSell;
+  for (const item of data) {
+    if ((item.currencyCodeA === currencyCodeA || item.currencyCodeA === currencyCodeB) &&
+      (item.currencyCodeB === currencyCodeA || item.currencyCodeB === currencyCodeB)) {
+      return item.rateSell
     }
   }
 
-  return null;
+  return null
 }
 
 export const convertCurrency = async (amount: number, fromCurrency: TypeCurrency, toCurrency: TypeCurrency) => {
-  const response = await fetch('https://api.monobank.ua/bank/currency');
+  const response = await fetch('https://api.monobank.ua/bank/currency')
 
-  const data = await response.json();
-  const exchangeRate = findExchangeRate(data, fromCurrency, toCurrency);
+  const data = await response.json()
+  const exchangeRate = findExchangeRate(data, fromCurrency, toCurrency)
 
   if (fromCurrency === 'USD' && toCurrency === 'UAH') {
-
-    return amount * exchangeRate;
+    return amount * exchangeRate
   }
 
   if (fromCurrency === 'UAH' && toCurrency === 'USD') {
-
-    return amount / exchangeRate;
+    return amount / exchangeRate
   }
 
-  return amount;
-};
+  return amount
+}

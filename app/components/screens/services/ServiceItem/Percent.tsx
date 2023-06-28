@@ -2,15 +2,15 @@ import {
   View,
   Text,
   StyleSheet
-} from 'react-native';
-import { FC } from 'react';
+} from 'react-native'
+import { FC } from 'react'
 
 interface Props {
-  percent: number,
+  percent: number
 }
 
 export const Percent: FC<Props> = (props) => {
-  const { percent } = props;
+  const { percent } = props
 
   return (
     <View style={styles.triangle}>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 27,
     borderRightColor: 'transparent',
     borderTopColor: '#AAEF00',
-    transform: [{ rotate: '90deg' }],
+    transform: [{ rotate: '90deg' }]
   },
   text: {
     width: 40,
@@ -43,6 +43,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
     transform: [{ rotate: '-40deg' }],
     top: -34,
-    left: 7,
-  },
+    left: 7
+  }
 })

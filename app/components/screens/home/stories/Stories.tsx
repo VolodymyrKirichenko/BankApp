@@ -1,13 +1,15 @@
-import { StyleSheet, ScrollView } from 'react-native';
-import { FC } from 'react';
-import { useStories } from '../../../../hooks/useStories';
-import { Loader } from '../../../../components/ui/Loader';
-import { StoryItem } from './StoryItem';
+import { StyleSheet, ScrollView } from 'react-native'
+import { FC } from 'react'
+import { useStories } from '../../../../hooks/useStories'
+import { Loader } from '../../../../components/ui/Loader'
+import { StoryItem } from './StoryItem'
 
 export const Stories: FC = ({ navigation }: any) => {
-  const { stories, isLoading } = useStories();
+  const { stories, isLoading } = useStories()
 
-  return isLoading ? <Loader /> : (
+  return isLoading
+    ? <Loader />
+    : (
     <ScrollView
       style={styles.story}
       horizontal={true}
@@ -17,7 +19,7 @@ export const Stories: FC = ({ navigation }: any) => {
         <StoryItem key={story._id} story={story} />
       ))}
     </ScrollView>
-  )
+      )
 }
 
 const styles = StyleSheet.create({

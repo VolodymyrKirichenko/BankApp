@@ -1,50 +1,48 @@
-import { FC, useCallback, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react'
 import {
   View,
   StyleSheet,
-  Text,
-} from 'react-native';
-import { Base, Rates, TypeCurrency } from '../../../../typedefs/typedefs';
-import { getCurrencyCode } from '../../../../utils/convertCurrency';
-import { BOX_SHADOW } from '../../../../utils/styles';
+  Text
+} from 'react-native'
+import { Base, Rates, TypeCurrency } from '../../../../typedefs/typedefs'
+import { getCurrencyCode } from '../../../../utils/convertCurrency'
+import { BOX_SHADOW } from '../../../../utils/styles'
 
 export const ExchangeRate: FC = () => {
-  const [base, setBase] = useState<Base[]>([]);
-  const [realRates, setRealRates] = useState({} as Omit<Rates, 'UAH'>);
-  const values: TypeCurrency[] = ['USD' , 'EUR' , 'PLN']
+  const [base, setBase] = useState<Base[]>([])
+  const [realRates, setRealRates] = useState({} as Omit<Rates, 'UAH'>)
+  const values: TypeCurrency[] = ['USD', 'EUR', 'PLN']
 
   const fetchExchangeRate = useCallback(async () => {
     try {
-      const response = await fetch('https://api.monobank.ua/bank/currency');
-      const data = await response.json();
+      const response = await fetch('https://api.monobank.ua/bank/currency')
+      const data = await response.json()
 
-      setBase(data);
+      setBase(data)
     } catch (error) {
-      console.error('Error fetching exchange rate:', error);
+      console.error('Error fetching exchange rate:', error)
     }
-  }, []);
+  }, [])
 
   const findExchangeRate = useCallback(() => {
-    const rates = values.reduce((acc, el) => {
-      const ISO = getCurrencyCode(el);
+    const rates = values.reduce<Rates>((acc, el) => {
+      const ISO = getCurrencyCode(el)
 
-      const rate = base.find((el) => el.currencyCodeA === ISO && el.currencyCodeB === 980);
+      const rate = base.find((el) => el.currencyCodeA === ISO && el.currencyCodeB === 980)
 
-      acc[el] = rate?.rateSell || 0;
-      return acc;
-    }, {} as Rates);
+      acc[el] = rate?.rateSell ?? 0
+      return acc
+    }, {} as Rates)
 
-    setRealRates(rates);
-  }, [base]);
-
-
+    setRealRates(rates)
+  }, [base])
 
   useEffect(() => {
-    fetchExchangeRate();
-  }, []);
+    fetchExchangeRate()
+  }, [])
 
   useEffect(() => {
-    findExchangeRate();
+    findExchangeRate()
   }, [base])
 
   return (
@@ -55,7 +53,7 @@ export const ExchangeRate: FC = () => {
             <Text style={styles.currencyText}>{String(key)}</Text>
             <Text>{String(value)}</Text>
           </View>
-        );
+        )
       })}
     </View>
   )
@@ -67,7 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 16,
     justifyContent: 'space-between',
-    borderRadius: 20,
+    borderRadius: 20
   },
   item: {
     flexDirection: 'column',

@@ -1,17 +1,17 @@
-import { StyleSheet } from 'react-native';
-import { FC } from 'react';
-import { Padding } from '../../ui/Padding';
-import { menu } from './menu';
-import { NavItem } from './NavItem/NavItem';
-import { TypeRootStackParamList } from '../../../navigation/types';
+import { StyleSheet } from 'react-native'
+import { FC } from 'react'
+import { Padding } from '../../ui/Padding'
+import { menu } from './menu'
+import { NavItem } from './NavItem/NavItem'
+import { TypeRootStackParamList } from '../../../navigation/types'
 
 interface Props {
-  navigate: (screenName: keyof TypeRootStackParamList) => void,
-  currentRoute: string,
+  navigate: (screenName: keyof TypeRootStackParamList) => void
+  currentRoute: string
 }
 
 export const Footer: FC<Props> = (props) => {
-  const { navigate, currentRoute } = props;
+  const { navigate, currentRoute } = props
 
   return (
     <Padding style={styles.main}>
@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingTop: 8,
     borderTopColor: '#E1E1E1',
-    borderTopWidth: 1,
+    borderTopWidth: 1
   }
 })

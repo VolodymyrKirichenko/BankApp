@@ -3,7 +3,7 @@ import {
   Text,
   StyleSheet,
   Image
-} from 'react-native';
+} from 'react-native'
 
 export const Header = () => {
   return (
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 4,
     marginBottom: 8,
-    marginTop: 16,
+    marginTop: 16
   },
   icon: {
     height: 60,
@@ -41,5 +41,5 @@ const styles = StyleSheet.create({
   textH4: {
     fontFamily: 'mt-light',
     fontSize: 14
-  },
+  }
 })
