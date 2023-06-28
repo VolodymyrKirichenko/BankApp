@@ -1,16 +1,16 @@
-import { View, Text, Alert } from 'react-native';
-import { FC } from 'react';
-import { Padding } from '../../../../components/ui/Padding';
-import { Button } from '../../../../components/ui/Button';
-import { asyncAlert } from './asyncAlert';
-import { useAuth } from '../../../../hooks/useAuth';
-import { addDoc, serverTimestamp } from 'firebase/firestore';
-import { collection } from '@firebase/firestore';
-import { db } from '../../../../utils/firebase';
-import { getRandomCardNumber } from '../../../../utils/getRandomCardNumber';
+import { View, Text, Alert } from 'react-native'
+import { FC } from 'react'
+import { Padding } from '../../../../components/ui/Padding'
+import { Button } from '../../../../components/ui/Button'
+import { asyncAlert } from './asyncAlert'
+import { useAuth } from '../../../../hooks/useAuth'
+import { addDoc, serverTimestamp } from 'firebase/firestore'
+import { collection } from '@firebase/firestore'
+import { db } from '../../../../utils/firebase'
+import { getRandomCardNumber } from '../../../../utils/getRandomCardNumber'
 
 export const ApplyNewProduct: FC = () => {
-  const { user } = useAuth();
+  const { user } = useAuth()
 
   const registerHandler = async () => {
     try {
@@ -22,7 +22,7 @@ export const ApplyNewProduct: FC = () => {
           resolveValue: 'UAH',
           textSecond: 'USD',
           resolveValueSecond: 'USD'
-        },
+        }
       })
 
       const cardType = await asyncAlert({
@@ -33,7 +33,7 @@ export const ApplyNewProduct: FC = () => {
           resolveValue: 'Mono Black',
           textSecond: 'White',
           resolveValueSecond: 'Mono White'
-        },
+        }
       })
 
       await addDoc(collection(db, 'accounts'), {
@@ -47,7 +47,7 @@ export const ApplyNewProduct: FC = () => {
     } catch (error: any) {
       Alert.alert('Error apply new product', error.message)
     }
-  };
+  }
 
   return (
     <Padding>

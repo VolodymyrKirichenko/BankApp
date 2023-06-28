@@ -1,23 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 
 interface Options {
-  isClicked: boolean,
-  setIsClicked: (value: boolean) => void,
-  delay: number,
+  isClicked: boolean
+  setIsClicked: (value: boolean) => void
+  delay: number
 }
 
 export const useTimer = (options: Options) => {
-  const { setIsClicked, isClicked, delay } = options;
+  const { setIsClicked, isClicked, delay } = options
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: NodeJS.Timeout
 
     if (isClicked) {
       timer = setTimeout(() => {
-        setIsClicked(false);
-      }, delay);
+        setIsClicked(false)
+      }, delay)
     }
 
-    return () => clearTimeout(timer);
-  }, [delay, isClicked, setIsClicked]);
-};
+    return () => { clearTimeout(timer) }
+  }, [delay, isClicked, setIsClicked])
+}

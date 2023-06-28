@@ -1,12 +1,10 @@
-import { FC } from 'react';
-import { useData } from '../../../../hooks/useData';
-// @ts-ignore
-import { StoryContainer as SC } from 'react-native-stories-view';
-import { useAuth } from '../../../../hooks/useAuth';
+import { FC } from 'react'
+import { useData } from '../../../../hooks/useData'
+// @ts-expect-error
+import { StoryContainer as SC } from 'react-native-stories-view'
 
 export const StoryContainer: FC = () => {
-  const { activeStories, setActiveStories } = useData();
-  const { user } = useAuth();
+  const { activeStories, setActiveStories } = useData()
 
   return (
     activeStories && (
@@ -15,11 +13,11 @@ export const StoryContainer: FC = () => {
         enableProgress={true}
         images={activeStories.images}
         duration={20}
-        onComplete={() => setActiveStories(null)}
+        onComplete={() => { setActiveStories(null) }}
         containerStyle={{
           top: 20,
           width: '100%',
-          height: '100%',
+          height: '100%'
         }}
         imageStyle={{
           height: 900,

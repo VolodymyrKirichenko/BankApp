@@ -1,5 +1,5 @@
-import { PasswordsType } from '../typedefs/typedefs';
-import { useGeneratePassword } from '../hooks/useGeneratePassword';
+import { PasswordsType } from '../typedefs/typedefs'
+import { useGeneratePassword } from '../hooks/useGeneratePassword'
 
 export const usePassword = () => {
   const {
@@ -10,8 +10,8 @@ export const usePassword = () => {
     handleChangeUpperInput,
     handleChangeLowerInput,
     handleChangeNumbersInput,
-    handleChangeSpecialCharsInput,
-  } = useGeneratePassword();
+    handleChangeSpecialCharsInput
+  } = useGeneratePassword()
 
   const passwordSettings: PasswordsType[] = [
     {
@@ -34,9 +34,9 @@ export const usePassword = () => {
       condition: '1234567890',
       handleChange: handleChangeNumbersInput
     }
-  ];
+  ]
 
   return {
-    passwordSettings,
-  };
+    passwordSettings
+  }
 }

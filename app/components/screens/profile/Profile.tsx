@@ -1,29 +1,39 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { FC } from 'react';
-import { Layout } from '../../../components/layout/Layout';
-import { Heading } from '../../../components/ui/Heading';
-import { Padding } from '../../../components/ui/Padding';
-import { useProfile } from '../../../hooks/useProfile';
-import { Loader } from '../../../components/ui/Loader';
-import { Field } from '../../../components/ui/Field';
-import { Button } from '../../../components/ui/Button';
-import { useAuth } from '../../../hooks/useAuth';
-import { useUpdateProfile } from '../../../hooks/useUpdateProfile';
+import { View, Text, StyleSheet } from 'react-native'
+import { FC, useCallback, useState } from 'react'
+import { Layout } from '../../../components/layout/Layout'
+import { Heading } from '../../../components/ui/Heading'
+import { Padding } from '../../../components/ui/Padding'
+import { useProfile } from '../../../hooks/useProfile'
+import { Loader } from '../../../components/ui/Loader'
+import { useUpdateProfile } from '../../../hooks/useUpdateProfile'
+import { ProfileContent } from './ProfileContent/ProfileContent'
 
-export const Profile: FC = ({ navigation }: any) => {
-  const { logout } = useAuth();
+export const Profile: FC = () => {
+  const [showModal, setShowModal] = useState(false)
+
   const {
     name,
     setName,
     profile,
-    isLoading: isProfileLoading
-  } = useProfile();
+    isLoading: isProfileLoading,
+    realAvatar,
+    setRealAvatar
+  } = useProfile()
 
   const {
     isLoading,
     isSuccess,
-    updateProfile,
-  } = useUpdateProfile(name, profile.docId);
+    updateProfile
+  } = useUpdateProfile(name, realAvatar, profile.docId)
+
+  const handleShowModal = useCallback(() => {
+    setShowModal(prevState => !prevState)
+  }, [])
+
+  const handleChangeAvatar = useCallback((uri: string) => {
+    setRealAvatar(uri)
+    handleShowModal()
+  }, [])
 
   return (
     <Layout>
@@ -38,28 +48,22 @@ export const Profile: FC = ({ navigation }: any) => {
           </View>
         )}
 
-        {(isProfileLoading || isLoading) ? (
+        {(isProfileLoading || isLoading)
+          ? (
           <Loader />
-        ) : (
-          <>
-            <Field
-              onChange={setName}
-              val={name}
-              placeholder='Enter name'
-            />
-
-            <Button
-              onPress={updateProfile}
-              title='Update profile'
-            />
-
-            <Button
-              onPress={logout}
-              title='Logout'
-              colors={['lightGrey', '#D6D8DB']}
-            />
-          </>
-        )}
+            )
+          : (
+          <ProfileContent
+            handleChangeAvatar={handleChangeAvatar}
+            showModal={showModal}
+            updateProfile={updateProfile}
+            handleShowModal={handleShowModal}
+            name={name}
+            setName={setName}
+            realAvatar={realAvatar}
+            setRealAvatar={setRealAvatar}
+          />
+            )}
       </Padding>
     </Layout>
   )
@@ -69,10 +73,10 @@ const styles = StyleSheet.create({
   alert: {
     backgroundColor: 'green',
     padding: 12,
-    borderRadius: 12,
+    borderRadius: 12
   },
   text: {
     color: 'white',
     textAlign: 'center'
-  },
+  }
 })

@@ -2,31 +2,48 @@ import {
   ImageBackground,
   ImageSourcePropType,
   StyleSheet,
-  Text
-} from 'react-native';
-import { FC } from 'react';
-import { IAccount } from '../../../../../typedefs/typedefs';
+  Text,
+  TouchableOpacity
+} from 'react-native'
+import { FC, useCallback, useState } from 'react'
+import { IAccount } from '../../../../../typedefs/typedefs'
+import { ModalWindow } from '../ModalWindow/ModalWindow'
 
 interface Props {
-  account: IAccount,
+  account: IAccount
 }
 
 export const ImageCard: FC<Props> = (props) => {
-  const { account } = props;
-  const { name, cardNumber } = account;
+  const { account } = props
+  const { name, cardNumber } = account
+  const [showModal, setShowModal] = useState(false)
 
-  const imageBlack: ImageSourcePropType = require('../../../../../../assets/monobank_mc-word.png');
-  const imageWhite: ImageSourcePropType = require('../../../../../../assets/bila-n.jpg');
+  const imageBlack: ImageSourcePropType = require('../../../../../../assets/monobank_mc-word.png')
+  const imageWhite: ImageSourcePropType = require('../../../../../../assets/bila-n.jpg')
+
+  const handleChangeModal = useCallback(() => {
+    setShowModal(prevState => !prevState)
+  }, [setShowModal])
 
   return (
     <>
-      <ImageBackground
-        source={name === 'Mono Black' ? imageBlack : imageWhite}
-        resizeMode='contain'
-        style={styles.icon}
-      >
-        <Text style={styles.text}>{cardNumber.slice(-4)}</Text>
-      </ImageBackground>
+      <TouchableOpacity onPress={handleChangeModal}>
+        <ImageBackground
+          source={name === 'Mono Black' ? imageBlack : imageWhite}
+          resizeMode='contain'
+          style={styles.icon}
+        >
+          <Text style={styles.text}>{cardNumber.slice(-4)}</Text>
+        </ImageBackground>
+      </TouchableOpacity>
+
+      <ModalWindow
+        showModal={showModal}
+        imageBlack={imageBlack}
+        imageWhite={imageWhite}
+        account={account}
+        handleChangeModal={handleChangeModal}
+      />
     </>
   )
 }
@@ -46,5 +63,5 @@ const styles = StyleSheet.create({
     bottom: 5,
     left: 5,
     fontWeight: '600'
-  },
+  }
 })

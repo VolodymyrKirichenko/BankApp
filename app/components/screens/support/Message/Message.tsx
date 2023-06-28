@@ -2,28 +2,28 @@ import {
   View,
   Text,
   StyleSheet
-} from 'react-native';
-import { FC } from 'react';
-import { IMessage } from '../../../../typedefs/typedefs';
-import { useAuth } from '../../../../hooks/useAuth';
+} from 'react-native'
+import { FC } from 'react'
+import { IMessage } from '../../../../typedefs/typedefs'
+import { useAuth } from '../../../../hooks/useAuth'
 
 interface Props {
-  message: IMessage,
+  message: IMessage
 }
 
 export const Message: FC<Props> = (props) => {
-  const { message } = props;
+  const { message } = props
 
-  const { user } = useAuth();
+  const { user } = useAuth()
 
-  const isMessageByAuthUser = user?.uid === message.userId;
+  const isMessageByAuthUser = user?.uid === message.userId
 
   return (
     <View
       style={[
         styles.container,
         { backgroundColor: isMessageByAuthUser ? '#4299e1' : '#edf2f7' },
-        { alignSelf: isMessageByAuthUser ? 'flex-end' : 'flex-start' },
+        { alignSelf: isMessageByAuthUser ? 'flex-end' : 'flex-start' }
       ]}
     >
       <Text
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginVertical: 8,
     paddingVertical: 8,
-    paddingHorizontal: 12,
+    paddingHorizontal: 12
   },
   time: {
     opacity: 0.7,

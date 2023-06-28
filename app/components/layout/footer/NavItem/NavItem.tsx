@@ -1,24 +1,24 @@
-import { Text, Pressable, StyleSheet } from 'react-native';
-import { FC } from 'react';
-import { IFooterItem } from '../../../../typedefs/typedefs';
-import { AntDesign } from '@expo/vector-icons';
-import { TypeRootStackParamList } from '../../../../navigation/types';
+import { Text, Pressable, StyleSheet } from 'react-native'
+import { FC } from 'react'
+import { IFooterItem } from '../../../../typedefs/typedefs'
+import { AntDesign } from '@expo/vector-icons'
+import { TypeRootStackParamList } from '../../../../navigation/types'
 
 interface Props {
-  item: IFooterItem,
-  navigate: (screenName: keyof TypeRootStackParamList) => void,
-  currentRoute: string,
+  item: IFooterItem
+  navigate: (screenName: keyof TypeRootStackParamList) => void
+  currentRoute: string
 }
 
 export const NavItem: FC<Props> = (props) => {
-  const { item, navigate, currentRoute } = props;
+  const { item, navigate, currentRoute } = props
 
-  const isActive = currentRoute === item.title;
+  const isActive = currentRoute === item.title
 
   return (
     <Pressable
       style={styles.main}
-      onPress={() => navigate(item.title)}
+      onPress={() => { navigate(item.title) }}
     >
       <AntDesign
         name={item.iconName}
@@ -40,10 +40,10 @@ const styles = StyleSheet.create({
     width: '20%'
   },
   icon: {
-    fontSize: 20,
+    fontSize: 20
   },
   text: {
     fontSize: 12,
-    marginTop: 4,
+    marginTop: 4
   }
 })

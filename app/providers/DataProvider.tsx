@@ -6,18 +6,18 @@ import {
   SetStateAction,
   useMemo,
   useState
-} from 'react';
-import { ActiveStories } from '../typedefs/typedefs';
+} from 'react'
+import { ActiveStories } from '../typedefs/typedefs'
 
 interface IContext {
-  activeStories: ActiveStories | null,
+  activeStories: ActiveStories | null
   setActiveStories: Dispatch<SetStateAction<any>>
 }
 
-export const DataContext = createContext<IContext>({} as IContext);
+export const DataContext = createContext<IContext>({} as IContext)
 
 export const DataProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [activeStories, setActiveStories] = useState<string[] | null>(null);
+  const [activeStories, setActiveStories] = useState<string[] | null>(null)
 
   const value = useMemo(() => ({
     activeStories, setActiveStories

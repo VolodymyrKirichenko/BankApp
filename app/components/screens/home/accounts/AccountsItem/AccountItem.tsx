@@ -1,16 +1,16 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { FC } from 'react';
-import { IAccount } from '../../../../../typedefs/typedefs';
-import { Currency } from './Currency';
-import { Balance } from './Balance';
-import { ImageCard } from './ImageCard';
+import { View, StyleSheet } from 'react-native'
+import { FC } from 'react'
+import { IAccount } from '../../../../../typedefs/typedefs'
+import { Currency } from './Currency'
+import { Balance } from './Balance'
+import { ImageCard } from './ImageCard'
 
 interface Props {
-  account: IAccount,
+  account: IAccount
 }
 
 export const AccountsItem: FC<Props> = (props) => {
-  const { account } = props;
+  const { account } = props
 
   return (
     <View style={styles.container}>

@@ -1,17 +1,18 @@
-import { Dispatch, FC, SetStateAction } from 'react';
-import { Modal, View, StyleSheet } from 'react-native';
-import { Field } from '../../components/ui/Field';
-import { Button } from '../../components/ui/Button';
+import React, { Dispatch, FC, SetStateAction } from 'react'
+import { Modal, View, StyleSheet } from 'react-native'
+import { Field } from '../../components/ui/Field'
+import { Button } from '../../components/ui/Button'
 
 interface Props {
-  needTwo?: boolean,
-  showModal: boolean,
-  setShowModal: (value: boolean) => void,
-  cardNumber?: string,
-  setCardNumber?:  Dispatch<SetStateAction<string>>,
-  transferAmount: string,
-  setTransferAmount: Dispatch<SetStateAction<string>>,
-  handleTransferConfirm: () => void,
+  needTwo?: boolean
+  showModal: boolean
+  setShowModal: (value: boolean) => void
+  cardNumber?: string
+  setCardNumber?: Dispatch<SetStateAction<string>>
+  transferAmount: string
+  setTransferAmount: Dispatch<SetStateAction<string>>
+  handleTransferConfirm: () => void
+  handleCardNumberChange: (text: string) => void
 }
 
 export const ModalWindow: FC<Props> = (props) => {
@@ -20,11 +21,11 @@ export const ModalWindow: FC<Props> = (props) => {
     showModal,
     cardNumber,
     setShowModal,
-    setCardNumber,
     transferAmount,
     setTransferAmount,
     handleTransferConfirm,
-  } = props;
+    handleCardNumberChange
+  } = props
 
   return (
     <Modal visible={showModal} animationType="slide">
@@ -32,8 +33,8 @@ export const ModalWindow: FC<Props> = (props) => {
         {needTwo && (
           <Field
             val={cardNumber}
-            placeholder={`Enter the recipient's card number`}
-            onChange={setCardNumber}
+            placeholder={'Enter the recipient\'s card number'}
+            onChange={handleCardNumberChange}
             keyboardType="numeric"
           />
         )}
@@ -51,7 +52,10 @@ export const ModalWindow: FC<Props> = (props) => {
           </View>
 
           <View style={{ flex: 1 }}>
-            <Button title="Cancel" onPress={() => setShowModal(false)} />
+            <Button
+              title="Cancel"
+              onPress={() => { setShowModal(false) }}
+            />
           </View>
         </View>
       </View>
@@ -70,5 +74,5 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     gap: 10
-  },
+  }
 })

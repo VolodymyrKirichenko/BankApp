@@ -1,25 +1,26 @@
-import { View, StyleSheet, Text  } from 'react-native';
-import { FC } from 'react';
-import { IAvatar } from '../../typedefs/typedefs';
+import { View, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native'
+import { FC } from 'react'
+import { IAvatar } from '../../typedefs/typedefs'
 
 export const Avatar: FC<IAvatar> = (props) => {
-  const { name, size = 'small' } = props;
+  const { size = 'small', icon, onChangeAvatar } = props
 
-  const isSmall = size === 'small';
+  const isSmall = size === 'small'
 
   return (
     <View
       style={[styles.avatar, {
-        width: isSmall ? 36 : 48, height: isSmall ? 36 : 48
+        width: isSmall ? 40 : 52, height: isSmall ? 40 : 52
       }]}
     >
-      <Text
-        style={[styles.text, {
-          fontSize: isSmall ? 22 : 30
-        }]}
-      >
-        {name?.slice(0, 1)}
-      </Text>
+      {icon && (
+        <TouchableWithoutFeedback onPress={() => { onChangeAvatar ? onChangeAvatar(icon) : '' }}>
+          <Image
+            source={{ uri: icon }}
+            style={styles.image}
+          />
+        </TouchableWithoutFeedback>
+      )}
     </View>
   )
 }
@@ -35,5 +36,10 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     fontWeight: '800'
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 50
   }
 })

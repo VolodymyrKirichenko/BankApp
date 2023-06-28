@@ -1,23 +1,25 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { FC } from 'react';
-import { useContacts } from '../../../../hooks/useContacts';
+import { View, StyleSheet, ScrollView } from 'react-native'
+import { FC } from 'react'
+import { useContacts } from '../../../../hooks/useContacts'
 import { SubHeading } from '../../../ui/SubHeading'
-import { Loader } from '../../../ui/Loader';
-import { ContactItem } from './ContactItem/ContactItem';
-import { TransferByCardNumber } from './TransferByCardNumber/TransferByCardNumber';
+import { Loader } from '../../../ui/Loader'
+import { ContactItem } from './ContactItem/ContactItem'
+import { TransferByCardNumber } from './TransferByCardNumber/TransferByCardNumber'
 
 export const Contacts: FC = () => {
-  const { contacts, isLoading } = useContacts();
+  const { contacts, isLoading } = useContacts()
 
   return (
-    <View style={styles.main}>
+    <View>
       <TransferByCardNumber />
 
       <SubHeading text='Phone transfers' />
 
-      {isLoading ? (
+      {isLoading
+        ? (
         <Loader />
-      ) : (
+          )
+        : (
         <ScrollView
           style={styles.scroll}
           showsHorizontalScrollIndicator={false}
@@ -30,16 +32,13 @@ export const Contacts: FC = () => {
             />
           ))}
         </ScrollView>
-      )}
+          )}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  main: {
-    marginVertical: 32,
-  },
   scroll: {
-    marginTop: 20,
+    marginTop: 20
   }
 })

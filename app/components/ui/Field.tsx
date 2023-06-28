@@ -1,7 +1,7 @@
-import { TextInput, StyleSheet, View } from 'react-native';
-import { FC } from 'react';
-import { IField } from '../../typedefs/typedefs';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { TextInput, StyleSheet, View } from 'react-native'
+import { FC } from 'react'
+import { IField } from '../../typedefs/typedefs'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 export const Field: FC<IField> = (props) => {
   const {
@@ -11,9 +11,9 @@ export const Field: FC<IField> = (props) => {
     isSecure,
     keyboardType,
     onChangeSecure
-  } = props;
+  } = props
 
-  const isVisible = isSecure !== undefined;
+  const isVisible = isSecure !== undefined
 
   return (
     <View style={styles.inputContainer}>
@@ -38,13 +38,13 @@ export const Field: FC<IField> = (props) => {
         />
       )}
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   input: {
     position: 'relative',
@@ -53,12 +53,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#EDF2EF',
     marginTop: 15,
     padding: 15,
-    flex: 1,
+    flex: 1
   },
   icon: {
     marginLeft: 10,
     position: 'absolute',
     top: '50%',
     right: 20
-  },
-});
+  }
+})

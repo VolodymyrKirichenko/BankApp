@@ -1,22 +1,23 @@
-import { View, ScrollView, StyleSheet } from 'react-native';
-import { FC, ReactNode } from 'react';
+import { View, ScrollView, StyleSheet } from 'react-native'
+import { FC, ReactNode } from 'react'
 
 interface Props {
-  isScrollView?: boolean,
-  children: ReactNode,
+  isScrollView?: boolean
+  children: ReactNode
 }
 
 export const Layout: FC<Props> = ({ children, isScrollView = true }) => {
-
   return (
     <View style={ styles.container }>
-      {isScrollView ? (
+      {isScrollView
+        ? (
         <ScrollView>
           {children}
         </ScrollView>
-      ) : (
-        children
-      )}
+          )
+        : (
+            children
+          )}
     </View>
   )
 }

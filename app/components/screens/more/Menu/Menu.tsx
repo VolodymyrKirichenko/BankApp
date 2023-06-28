@@ -1,7 +1,7 @@
-import { View } from 'react-native';
-import { FC } from 'react';
-import { menu } from '../menu';
-import { MenuItem } from './MenuItem/MenuItem';
+import { View } from 'react-native'
+import { FC } from 'react'
+import { menu } from '../menu'
+import { MenuItem } from './MenuItem/MenuItem'
 
 export const Menu: FC = () => {
   return (

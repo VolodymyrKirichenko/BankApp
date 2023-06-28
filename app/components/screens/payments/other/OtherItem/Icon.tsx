@@ -1,12 +1,12 @@
-import { FC } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { IFooterItem } from '../../../../../typedefs/typedefs';
+import { FC } from 'react'
+import { View, StyleSheet } from 'react-native'
+import { IFooterItem } from '../../../../../typedefs/typedefs'
 import { AntDesign } from '@expo/vector-icons'
 
-interface Props extends Pick<IFooterItem, 'iconName'>{}
+interface Props extends Pick<IFooterItem, 'iconName'> {}
 
 export const Icon: FC<Props> = (props) => {
-  const { iconName } = props;
+  const { iconName } = props
 
   return (
     <View style={styles.icon}>

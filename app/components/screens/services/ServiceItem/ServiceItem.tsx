@@ -1,17 +1,17 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { FC } from 'react';
-import { IService } from '../../../../typedefs/typedefs';
-import { MaterialIcons } from '@expo/vector-icons';
-import { Percent } from './Percent';
-import { LinearGradient } from 'expo-linear-gradient';
-import { getRandomGradient } from '../../../../utils/getRandomGradient';
+import { View, Text, StyleSheet } from 'react-native'
+import { FC } from 'react'
+import { IService } from '../../../../typedefs/typedefs'
+import { MaterialIcons } from '@expo/vector-icons'
+import { Percent } from './Percent'
+import { LinearGradient } from 'expo-linear-gradient'
+import { getRandomGradient } from '../../../../utils/getRandomGradient'
 
 interface Props {
-  service: IService,
+  service: IService
 }
 
 export const ServiceItem: FC<Props> = (props) => {
-  const { service } = props;
+  const { service } = props
 
   return (
     <View style={styles.container}>
@@ -37,7 +37,7 @@ export const ServiceItem: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 16,
+    marginBottom: 16
   },
   item: {
     borderRadius: 12,
